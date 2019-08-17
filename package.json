@@ -4,10 +4,10 @@
   "description": "React app with SSR support using express and webpack v4",
   "main": "index.js",
   "scripts": {
-    "build": "babel ./server --out-dir dist",
+    "build": "babel ./src --out-dir dist",
     "clean": "rimraf dist",
-    "start": "npm run clean && npm run build && node ./dist/index.js",
-    "start:dev": "npm run clean && npm run build && babel-node ./server/index.js"
+    "start": "npm run clean && npm run build && node ./dist/server/start.js",
+    "start:dev": "npm run clean && npm run build && babel-node ./src/server/start.js"
   },
   "keywords": [
     "react",
