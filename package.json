@@ -1,0 +1,21 @@
+{
+  "name": "react-ssr-app",
+  "version": "1.0.0",
+  "description": "React app with SSR support using express and webpack v4",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/startServer.js"
+  },
+  "keywords": [
+    "react",
+    "ssr",
+    "express",
+    "webpack4"
+  ],
+  "author": "Dhruv Patel",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-enrouten": "^1.3.0"
+  }
+}
