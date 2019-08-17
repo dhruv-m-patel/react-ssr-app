@@ -10,7 +10,7 @@ export default async function index(router) {
       </head>
       <body>
         <div id="container">
-          Welcome to index page
+          Welcome to index page!!!
         </div>
         <script src="/app.bundle.js"></script>
       </body>

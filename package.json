@@ -7,7 +7,8 @@
     "build": "babel ./src --out-dir dist",
     "clean": "rimraf dist",
     "start": "npm run clean && npm run build && node ./dist/server/start.js",
-    "start:dev": "npm run clean && npm run build && babel-node ./src/server/start.js"
+    "start:dev": "babel-node ./src/server/start.js",
+    "start:watch": "npm run clean && npm run build && nodemon"
   },
   "keywords": [
     "react",
@@ -30,6 +31,7 @@
     "@babel/node": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "nodemon": "^1.19.1",
     "rimraf": "^3.0.0"
   }
 }
