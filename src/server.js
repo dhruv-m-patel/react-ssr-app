@@ -26,7 +26,6 @@ app.use(enrouten({ directory: 'routes' }));
 app.get('*', async (req, res, next) => {
   if (req.method.toLowerCase() === 'get' && req.headers['Content-Type'] !== 'application/json') {
     const context = {};
-    const pageTitle = process.env.APP_NAME || 'react-ssr-app';
     const content = ReactDOMServer.renderToString(
       <StaticRouter location={req.url} context={context}>
         <Router />

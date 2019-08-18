@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "react"
+  ],
+  "extends":  [
+    "standard",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
