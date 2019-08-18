@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames/bind';
 import DefaultHelmet from '../DefaultHelmet';
-import styles from './Page.css';
+import './Page.css';
 
-const cx = classnames.bind(styles);
+// const cx = classnames.bind(styles);
 
 export default function Page({
   title,
@@ -12,7 +12,7 @@ export default function Page({
   children,
 }) {
   return (
-    <div className={cx('page')}>
+    <div className="page">
       <DefaultHelmet title={title} description={description} />
       {children}
     </div>

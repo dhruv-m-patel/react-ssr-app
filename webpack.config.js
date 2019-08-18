@@ -10,10 +10,10 @@ dotenv.config();
 const isProduction = process.env.NODE_ENV === 'production';
 
 const plugins = [
-  new ManifestPlugin(),
   new MiniCssExtractPlugin({
     filename: isProduction ? '[name].[chunkhash].css' : '[name].bundle.css',
   }),
+  new ManifestPlugin(),
 ];
 
 const minificationPlugins = [
@@ -23,19 +23,6 @@ const minificationPlugins = [
 
 module.exports = {
   mode: process.env.NODE_ENV || 'production',
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          chunks: 'initial',
-          test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,
-          name: 'vendor',
-          enforce: true,
-        },
-      },
-    },
-    ...isProduction && { minimizer: minificationPlugins }
-  },
   entry: {
     client: path.resolve(__dirname, 'src/client/index.js'),
   },
@@ -43,7 +30,6 @@ module.exports = {
     filename: isProduction ? '[name].[chunkhash].js' : '[name].bundle.js',
     path: path.resolve(__dirname, 'dist/webpack'),
   },
-  plugins,
   module: {
     rules: [
       {
@@ -54,17 +40,16 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          isProduction ? {
+          {
             loader: MiniCssExtractPlugin.loader,
             options: {
               hmr: process.env.NODE_ENV === 'development',
             },
-          } : 'style-loader',
+          },
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
-              modules: true,
+              sourceMap: isProduction,
               importLoaders: 1,
             },
           },
@@ -88,11 +73,26 @@ module.exports = {
       },
     ],
   },
+  plugins,
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          chunks: 'initial',
+          test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,
+          name: 'vendor',
+          enforce: true,
+        },
+      },
+    },
+    ...isProduction && { minimizer: minificationPlugins }
+  },
   resolve: {
     extensions: [".js", ".jsx", ".css", ".json"],
   },
-  devtool: isProduction ? 'cheap-source-map' : 'cheap-module-eval-source-map',
+  devtool: isProduction ? 'cheap-source-map' : false,
   performance: {
     maxAssetSize: 500000, // in bytes
+    hints: false,
   },
 };

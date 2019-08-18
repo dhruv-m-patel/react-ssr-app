@@ -1,0 +1,23 @@
+:root {
+  --baseFontSize: 14px;
+
+  --red: #ee5340;
+  --orange: #ed7a00;
+  --green: #13ce73;
+  --blue: blue;
+  --white: #fff;
+  --black: #000;
+  --grey: #ededed;
+
+  --error: var(--red);
+  --warning: var(--orange);
+  --success: var(--green);
+
+  @custom-media --mobileViewport (width >= 320px);
+  @custom-media --tabletViewport (width >= 768px);
+  @custom-media --desktopViewport (width >= 992px);
+  @custom-media --wideDesktopViewport (width >= 1200px);
+  @custom-media --onlyMobileViewport (width < 768px);
+  @custom-media --onlyMobileAndTablet (width < 992px);
+  @custom-media --onlyTabletViewport (width >= 768px) and (width < 992px);
+}

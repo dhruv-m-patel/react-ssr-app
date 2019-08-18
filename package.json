@@ -6,7 +6,7 @@
   "scripts": {
     "build:server": "babel ./src --out-dir dist",
     "build:client": "webpack",
-    "build": "npm run build:client && npm run build:server",
+    "build": "npm run build:server && npm run build:client",
     "clean": "rimraf dist",
     "start": "npm run clean && npm run build && node ./dist/server.js",
     "start:watch": "npm run clean && npm run build && nodemon"
