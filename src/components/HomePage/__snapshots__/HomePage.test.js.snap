@@ -13,5 +13,7 @@ exports[`HomePage it should render 1`] = `
   >
     Say Hello
   </a>
+  <br />
+  <br />
 </div>
 `;

@@ -1,8 +1,8 @@
-export default function getInitialHtml(content, manifest) {
+export default function getInitialHtml(content, manifest, preloadedState) {
   let scriptTags = '';
   if (manifest['client.js'] && manifest['vendor.js']) {
     scriptTags = [
-      manifest['vendor.js'], 
+      manifest['vendor.js'],
       manifest['client.js'],
     ].map(file => `<script type="text/javascript" src="/${file}"></script>`).join('');
   }
@@ -19,6 +19,9 @@ export default function getInitialHtml(content, manifest) {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
         ${cssTag}
+        <script>
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)};
+        </script>
       </head>
       <body>
         <div id="root">

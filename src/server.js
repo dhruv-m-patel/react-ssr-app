@@ -3,13 +3,14 @@ import enrouten from 'express-enrouten';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
+import 'fetch-everywhere';
 import Router from './components/router';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import manifest from '../dist/webpack/manifest.json';
 import getInitialHtml from './lib/utils/getInitialHtml';
-
 global.Promise = require('bluebird').Promise;
+import { initialState as preloadedState } from './reducers/rootReducer';
 
 // Load environment variables
 dotenv.config();
@@ -35,7 +36,7 @@ app.get('*', async (req, res, next) => {
     if (context.url) {
       res.redirect(context.url);
     } else {
-      res.status(200).send(getInitialHtml(content, manifest));
+      res.status(200).send(getInitialHtml(content, manifest, preloadedState));
     }
   }
 
