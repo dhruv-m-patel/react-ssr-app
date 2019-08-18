@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelloPage it should render 1`] = `
+<div
+  className="page"
+>
+  <h1>
+    Hello World!
+  </h1>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    See Welcome Screen
+  </a>
+</div>
+`;
