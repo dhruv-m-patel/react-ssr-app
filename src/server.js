@@ -9,8 +9,9 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import manifest from '../dist/webpack/manifest.json';
 import getInitialHtml from './lib/utils/getInitialHtml';
-global.Promise = require('bluebird').Promise;
 import { initialState as preloadedState } from './reducers/rootReducer';
+
+global.Promise = require('bluebird').Promise;
 
 // Load environment variables
 dotenv.config();

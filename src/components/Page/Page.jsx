@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames/bind';
+import Container from 'react-bootstrap/Container';
 import DefaultHelmet from '../DefaultHelmet';
 import './Page.css';
 
@@ -12,10 +12,10 @@ export default function Page({
   children,
 }) {
   return (
-    <div className="page">
+    <Container className="page">
       <DefaultHelmet title={title} description={description} />
       {children}
-    </div>
+    </Container>
   );
 }
 

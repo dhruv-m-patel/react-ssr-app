@@ -2,7 +2,7 @@
 
 exports[`NotFound it should render 1`] = `
 <div
-  className="page"
+  className="page container"
 >
   <h1>
     404 Not Found!

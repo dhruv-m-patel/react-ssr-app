@@ -2,18 +2,24 @@
 
 exports[`HomePage it should render 1`] = `
 <div
-  className="page"
+  className="page container"
 >
-  <h1>
-    Welcome Home!
-  </h1>
-  <a
-    href="/hello"
-    onClick={[Function]}
+  <div
+    className="jumbotron jumbotron-fluid"
   >
-    Say Hello
-  </a>
-  <br />
-  <br />
+    <div
+      className="container"
+    >
+      <h1>
+        Welcome Home!
+      </h1>
+      <a
+        href="/hello"
+        onClick={[Function]}
+      >
+        Say Hello
+      </a>
+    </div>
+  </div>
 </div>
 `;

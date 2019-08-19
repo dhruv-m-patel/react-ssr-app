@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Card from 'react-bootstrap/Card';
+import Spinner from 'react-bootstrap/Spinner';
+import Container from 'react-bootstrap/Container';
 import Page from '../Page';
 
 export default function HomePage({
@@ -17,23 +21,30 @@ export default function HomePage({
 
   return (
     <Page>
-      <h1>Welcome Home!</h1>
-      <Link to="/hello">Say Hello</Link>
-      <br />
-      <br />
+      <Jumbotron fluid>
+        <Container>
+          <h1>Welcome Home!</h1>
+          <Link to="/hello">Say Hello</Link>
+        </Container>
+      </Jumbotron>
       {isFetching && (
-        <label>Fetching data with redux...</label>
+        <React.Fragment>
+          <Spinner size="sm" />
+          <label>Fetching data with redux...</label>
+        </React.Fragment>
       )}
       {!!error && (
         <label className="error">Error fetching data</label>
       )}
       {data && data.length > 0 && (
-        <React.Fragment>
-          <h3>Data fetched with Redux</h3>
-          <ul>
-            {data.map(item => <li key={item}>{item}</li>)}
-          </ul>
-        </React.Fragment>
+        <Card>
+          <Card.Body>
+            <h3>Data fetched with Redux</h3>
+            <ul>
+              {data.map(item => <li key={item}>{item}</li>)}
+            </ul>
+          </Card.Body>
+        </Card>
       )}
     </Page>
   );

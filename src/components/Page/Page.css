@@ -26,7 +26,4 @@ a, a:hover, a:active {
   color: var(--black);
   font-size: var(--baseFontSize);
   font-family: Helvetica, sans-serif;
-  width: 1024px;
-  margin: 0 auto;
-  padding: 0;
 }
