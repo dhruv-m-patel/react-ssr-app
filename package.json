@@ -2,7 +2,7 @@
   "name": "react-ssr-app",
   "version": "1.0.0",
   "description": "React app with SSR support using express and webpack v4",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "build:server": "babel ./src --out-dir dist",
     "build:client": "webpack",
@@ -17,6 +17,10 @@
     "test": "jest",
     "ci:test": "jest --updateSnapshot --coverage"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhruv-m-patel/react-ssr-app.git"
+  },
   "keywords": [
     "react",
     "ssr",
@@ -24,6 +28,10 @@
     "webpack4"
   ],
   "author": "Dhruv Patel",
+  "bugs": {
+    "url": "https://github.com/dhruv-m-patel/react-ssr-app/issues"
+  },
+  "homepage": "https://github.com/dhruv-m-patel/react-ssr-app#readme",
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.5.5",
