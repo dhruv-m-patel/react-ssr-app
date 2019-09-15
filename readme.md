@@ -2,6 +2,8 @@
 
 React app with SSR support using express and webpack v4
 
+![CI Status](https://github.com/dhruv-m-patel/react-ssr-app/workflows/Continuous%20Integration/badge.svg)
+
 ### Setup
 
 ```

@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 
-import testReducer from './test-reducer';
+import testReducer, { defaultState as testReducerState } from './test-reducer';
 
-const defaultState = {
-  test: testReducer.defaultState,
+const DEFAULT_STATE = {
+  test: testReducerState,
 };
 
 export const initialState = typeof window !== 'undefined' && Object.keys(window.__PRELOADED_STATE__) > 0
   ? JSON.parse(window.__PRELOADED_STATE__)
-  : defaultState;
+  : DEFAULT_STATE;
 
 export default combineReducers({
   test: testReducer,

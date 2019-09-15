@@ -1,14 +1,10 @@
 import { RSAA } from 'redux-api-middleware';
 
-const apiCallStates = {
-  pending: 'pending',
-  completed: 'completed',
-  failed: 'failed',
-};
-
 export const Actions = {
   Test: {
-    FetchData: {...apiCallStates},
+    FetchDataPending: 'FetchDataPending',
+    FetchDataCompleted: 'FetchDataCompleted',
+    FetchDataFailed: 'FetchDataFailed',
   },
 };
 
@@ -26,8 +22,8 @@ export function generateRequest({ body, ...options }) {
 export const fetchTestData = () => generateRequest({
   endpoint: '/api/test-data',
   types: [
-    Actions.Test.FetchData.pending,
-    Actions.Test.FetchData.completed,
-    Actions.Test.FetchData.failed,
+    Actions.Test.FetchDataPending,
+    Actions.Test.FetchDataCompleted,
+    Actions.Test.FetchDataFailed,
   ],
 });
