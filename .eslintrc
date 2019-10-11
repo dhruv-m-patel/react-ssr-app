@@ -11,5 +11,11 @@
     "react": {
       "version": "detect"
     }
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "semi": [0],
+    "space-before-function-paren": [0],
+    "comma-dangle": [0]
   }
 }
