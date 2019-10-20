@@ -9,7 +9,7 @@ export default function getInitialHtml(content, manifest, preloadedState) {
 
   let cssTag = '';
   if (manifest['client.css']) {
-    cssTag = `<link rel="stylesheet" href="${manifest['client.css']}" />`;
+    cssTag = `<link rel="stylesheet" href="/${manifest['client.css']}" />`;
   }
 
   return `
@@ -19,15 +19,11 @@ export default function getInitialHtml(content, manifest, preloadedState) {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
         ${cssTag}
-        <script>
-          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')};
-        </script>
+        <script>window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')};</script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
       </head>
       <body>
-        <div id="root">
-          ${content}
-        </div>
+        <div id="root">${content}</div>
         ${scriptTags}
         <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin />
       </body>

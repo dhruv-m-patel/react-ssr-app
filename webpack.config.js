@@ -28,8 +28,7 @@ module.exports = {
   },
   output: {
     filename: isProduction ? '[name].[chunkhash].js' : '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: 'dist/',
+    path: path.resolve(__dirname, 'dist/webpack'),
   },
   module: {
     rules: [

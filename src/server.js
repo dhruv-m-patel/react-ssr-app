@@ -8,7 +8,7 @@ import 'fetch-everywhere';
 import Router from './components/router';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import manifest from '../dist/manifest.json';
+import manifest from '../dist/webpack/manifest.json';
 import getInitialHtml from './lib/utils/getInitialHtml';
 import { DEFAULT_STATE } from './reducers/rootReducer';
 import createStore from './client/store';
