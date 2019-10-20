@@ -4,11 +4,19 @@ exports[`NotFound it should render 1`] = `
 <div
   className="page container"
 >
-  <h1>
-    404 Not Found!
-  </h1>
-  <p>
-    The page you are looking for was not found.
-  </p>
+  <div
+    className="container"
+  >
+    <div
+      className="jumbotron"
+    >
+      <h1>
+        404 Not Found!
+      </h1>
+      <p>
+        The page you are looking for was not found.
+      </p>
+    </div>
+  </div>
 </div>
 `;

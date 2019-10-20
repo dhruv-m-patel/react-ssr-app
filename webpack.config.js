@@ -78,17 +78,16 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         commons: {
-          chunks: 'initial',
-          test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,
+          chunks: 'all',
+          test: /[\\/]node_modules[\\/]/,
           name: 'vendor',
-          enforce: true,
         },
       },
     },
     ...isProduction && { minimizer: minificationPlugins }
   },
   resolve: {
-    extensions: [".js", ".jsx", ".css", ".json"],
+    extensions: ['.js', '.jsx', '.css', '.json'],
   },
   devtool: isProduction ? 'cheap-source-map' : false,
   performance: {
