@@ -1,6 +1,6 @@
 {
   "port": 3000,
-  "title": "Hello World",
+  "title": "React App",
   "trustProxy": true,
   "logging": {
     "format": "combined",
