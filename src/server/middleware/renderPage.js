@@ -16,7 +16,7 @@ export default function () {
           <div id="root"></div>
           <script type="text/javascript" src="/${manifest['vendor.js']}"></script>
           <script type="text/javascript" src="/${manifest['client.js']}"></script>
-          <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin />
+          <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
         </body>
       </html>
     `);
