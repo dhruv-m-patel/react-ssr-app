@@ -8,6 +8,7 @@ import shortstopRegex from 'shortstop-regex';
 import bodyParser from 'body-parser';
 import enrouten from 'express-enrouten';
 import 'fetch-everywhere';
+import renderPage from './middleware/renderPage'
 
 function betterRequire(basePath) {
   const baseRequire = handlers.require(basePath);
@@ -91,6 +92,8 @@ export default class ExpressServer {
     if (middleware) {
       this.app.use(meddleware(middleware));
     }
+
+    this.app.use(renderPage());
 
     return new Promise((resolve, reject) => {
       this.server.listen(config.get('port'), resolve);
