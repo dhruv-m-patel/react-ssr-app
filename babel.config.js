@@ -8,6 +8,7 @@ module.exports = {
   ],
   plugins: [
     '@babel/transform-runtime',
+    '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-syntax-optional-chaining',
     'babel-plugin-css-modules-transform',
