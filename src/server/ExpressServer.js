@@ -2,21 +2,12 @@ import path from 'path';
 import http from 'http';
 import confit from 'confit';
 import express from 'express';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { Provider } from 'react-redux';
-import { StaticRouter } from 'react-router-dom';
 import meddleware from 'meddleware';
 import handlers from 'shortstop-handlers';
 import shortstopRegex from 'shortstop-regex';
 import bodyParser from 'body-parser';
 import enrouten from 'express-enrouten';
 import 'fetch-everywhere';
-
-import Router from '../components/router';
-import getInitialHtml from '../lib/utils/getInitialHtml';
-import { DEFAULT_STATE } from '../reducers/rootReducer';
-import createStore from '../client/store';
 
 function betterRequire(basePath) {
   const baseRequire = handlers.require(basePath);
@@ -78,7 +69,6 @@ export default class ExpressServer {
 
   async start() {
     const BUILD_DIRECTORY = `${process.cwd()}/dist`;
-    const manifest = require(`${BUILD_DIRECTORY}/webpack/manifest.json`);
 
     this.app.use(express.urlencoded({ extended: false }));
     this.app.use(express.static('static'));
@@ -101,33 +91,6 @@ export default class ExpressServer {
     if (middleware) {
       this.app.use(meddleware(middleware));
     }
-
-    this.app.get('*', async (req, res, next) => {
-      if (req.method.toLowerCase() === 'get' && req.headers['Content-Type'] !== 'application/json') {
-        const context = {};
-        if (context.url) {
-          res.redirect(context.url);
-          return;
-        }
-
-        const store = createStore(DEFAULT_STATE);
-        const content = ReactDOMServer.renderToString(
-          <StaticRouter location={req.url} context={context}>
-            <Provider store={store}>
-              <Router />
-            </Provider>
-          </StaticRouter>
-        );
-
-        if (context.url) {
-          res.redirect(context.url);
-        } else {
-          res.status(200).send(getInitialHtml(content, manifest, store.getState()));
-        }
-      }
-
-      next();
-    });
 
     return new Promise((resolve, reject) => {
       this.server.listen(config.get('port'), resolve);
