@@ -17,6 +17,6 @@ DefaultHelmet.propTypes = {
 };
 
 DefaultHelmet.defaultProps = {
-  title: 'react-ssr-app',
-  description: 'A boilerplate react app with SSR support using express, babel7 and webpack4',
+  title: 'React App',
+  description: 'A boilerplate React app with SSR support',
 };

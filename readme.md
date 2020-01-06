@@ -1,20 +1,18 @@
-# react-ssr-app
+# react-app
 
-React app with SSR support using express and webpack v4
+React app with SSR support
 
-![CI Status](https://github.com/dhruv-m-patel/react-ssr-app/workflows/Continuous%20Integration/badge.svg)
+![CI Status](https://github.com/dhruv-m-patel/react-app/workflows/Continuous%20Integration/badge.svg)
 
 ### Setup
 
 ```
-$ git clone git@github.com:dhruv-m-patel/react-ssr-app.git
+$ git clone git@github.com:dhruv-m-patel/react-app.git
 $ npm install
 $ npm start
 ```
 
-**NOTE:** CSS Modules are not supported yet, so you should name classes such that they are distinct.
-
-### This app was made with:
+### Made with:
 
 - React 16.8
 - Webpack v4
