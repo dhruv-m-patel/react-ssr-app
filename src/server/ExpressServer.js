@@ -9,6 +9,7 @@ import bodyParser from 'body-parser';
 import enrouten from 'express-enrouten';
 import 'fetch-everywhere';
 import renderPage from './middleware/renderPage'
+import webpack from 'webpack';
 
 function betterRequire(basePath) {
   const baseRequire = handlers.require(basePath);
@@ -95,6 +96,11 @@ export default class ExpressServer {
 
     this.app.use(renderPage());
 
+    if (process.env.NODE_ENV === 'development') {
+      const compiler = webpack(require('../../webpack.config.js'));
+      this.app.use(require('webpack-dev-middleware')(compiler));
+      this.app.use(require('webpack-hot-middleware')(compiler));
+    }
     return new Promise((resolve, reject) => {
       this.server.listen(config.get('port'), resolve);
     });
