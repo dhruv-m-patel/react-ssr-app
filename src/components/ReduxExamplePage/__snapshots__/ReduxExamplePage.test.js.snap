@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReduxExamplePage it should render 1`] = `
+<div
+  className="page container-fluid"
+>
+  <div
+    className="App"
+  >
+    <header
+      className="App-header"
+    >
+      <img
+        alt="logo"
+        className="App-logo"
+        src="/images/react.svg"
+      />
+      <h2>
+        React App
+      </h2>
+      <small>
+        A React starter app with SSR support.
+      </small>
+    </header>
+    <br />
+    <br />
+    <div
+      className="Content container"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-md-6 col-sm-10 offset-md-3 offset-sm-1"
+        >
+          <h4>
+            An example page showing Redux integration
+          </h4>
+          <br />
+          <br />
+          <br />
+          <br />
+          <a
+            className="App-link"
+            href="/"
+            onClick={[Function]}
+          >
+            View Home Page
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

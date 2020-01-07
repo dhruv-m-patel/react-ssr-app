@@ -2,7 +2,7 @@
 
 exports[`Page it should render 1`] = `
 <div
-  className="page container"
+  className="page container-fluid"
 >
   <div />
 </div>

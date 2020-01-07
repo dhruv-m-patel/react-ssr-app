@@ -1,65 +1,46 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import Jumbotron from 'react-bootstrap/Jumbotron';
-import Card from 'react-bootstrap/Card';
-import Spinner from 'react-bootstrap/Spinner';
-import Container from 'react-bootstrap/Container';
+import React from 'react';
 import Page from '../Page';
+import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import './HomePage.css';
 
-export default function HomePage({
-  isFetching,
-  error,
-  data,
-  fetchTestData,
-}) {
-  useEffect(() => {
-    if (!isFetching && !error && (!data || !data.length)) {
-      fetchTestData();
-    }
-  }, [isFetching, error, data]);
-
+export default function HomePage() {
   return (
     <Page>
-      <Jumbotron fluid>
-        <Container>
-          <h1>Welcome Home!</h1>
-          <Link to="/hello">Say Hello</Link>
+      <div className="App">
+        <header className="App-header">
+          <img src="/images/react.svg" className="App-logo" alt="logo" />
+          <h2>React App</h2>
+          <small>A React starter app with SSR support.</small>
+        </header>
+        <br />
+        <br />
+        <Container className="Content">
+          <Row>
+            <Col sm={{ offset: 1, span: 10 }} md={{ offset: 4, span: 4 }}>
+              <h5>This starter-kit was built with:</h5>
+              <ul>
+                <li>React v16.8</li>
+                <li>Redux</li>
+                <li>React Router</li>
+                <li>Webpack v4</li>
+                <li>Babel v7</li>
+                <li>Express v4</li>
+                <li>Jest</li>
+                <li>ESLint</li>
+                <li>Stylelint</li>
+                <li>Husky</li>
+                <li>React Bootstrap</li>
+              </ul>
+              <br />
+              <br />
+              <Link className="App-link" to="/redux-example">View Example Page with Redux integration</Link>
+            </Col>
+          </Row>
         </Container>
-      </Jumbotron>
-      {isFetching && (
-        <React.Fragment>
-          <Spinner size="sm" />
-          <label>Fetching data with redux...</label>
-        </React.Fragment>
-      )}
-      {!!error && (
-        <label className="error">Error fetching data</label>
-      )}
-      {data && data.length > 0 && (
-        <Card>
-          <Card.Body>
-            <h3>Data fetched with Redux</h3>
-            <ul>
-              {data.map(item => <li key={item}>{item}</li>)}
-            </ul>
-          </Card.Body>
-        </Card>
-      )}
+      </div>
     </Page>
   );
 }
-
-HomePage.propTypes = {
-  isFetching: PropTypes.bool,
-  error: PropTypes.string,
-  data: PropTypes.arrayOf(PropTypes.string),
-  fetchTestData: PropTypes.func,
-};
-
-HomePage.defaultProps = {
-  isFetching: false,
-  error: undefined,
-  data: undefined,
-  fetchTestData: () => {},
-};

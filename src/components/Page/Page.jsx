@@ -4,15 +4,13 @@ import Container from 'react-bootstrap/Container';
 import DefaultHelmet from '../DefaultHelmet';
 import './Page.css';
 
-// const cx = classnames.bind(styles);
-
 export default function Page({
   title,
   description,
   children,
 }) {
   return (
-    <Container className="page">
+    <Container fluid className="page">
       <DefaultHelmet title={title} description={description} />
       {children}
     </Container>
