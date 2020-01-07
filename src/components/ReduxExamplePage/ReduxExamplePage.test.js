@@ -1,11 +1,11 @@
 import Tester from '../../../tests/Tester';
-import HelloPage from './HelloPage';
+import ReduxExamplePage from './ReduxExamplePage';
 
 const tester = new Tester();
 
-describe('HelloPage', () => {
+describe('ReduxExamplePage', () => {
   test('it should render', () => {
-    const snapshot = tester.getSnapshot(HelloPage);
+    const snapshot = tester.getSnapshot(ReduxExamplePage);
     expect(snapshot).toMatchSnapshot();
   });
 });

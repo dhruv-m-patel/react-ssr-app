@@ -4,10 +4,12 @@
   --red: #ee5340;
   --orange: #ed7a00;
   --green: #13ce73;
-  --blue: blue;
+  --blue: #61dafb;
   --white: #fff;
   --black: #000;
   --grey: #ededed;
+
+  --backgroundColor: #282c34;
 
   --error: var(--red);
   --warning: var(--orange);
