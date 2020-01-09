@@ -32,7 +32,7 @@ export default function HomePage() {
                 <li>ESLint</li>
                 <li>Stylelint</li>
                 <li>Husky</li>
-                <li>React Bootstrap 123</li>
+                <li>React Bootstrap</li>
               </ul>
               <br />
               <br />
