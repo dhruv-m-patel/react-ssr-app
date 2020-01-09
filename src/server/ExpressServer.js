@@ -93,7 +93,8 @@ export default class ExpressServer {
     }
 
     return new Promise((resolve, reject) => {
-      this.server.listen(config.get('port'), resolve);
+      const port = ['staging', 'production'].includes(process.env.NODE_ENV) ? process.env.PORT : config.get('port');
+      this.server.listen(port, resolve);
     });
   }
 

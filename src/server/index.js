@@ -6,5 +6,5 @@ global.Promise = require('bluebird').Promise;
 
 const server = new ExpressServer();
 server.start().then(() => {
-  console.log(`Listening on port ${server.config.get('port')}`);
+  console.log('App has started...');
 });
