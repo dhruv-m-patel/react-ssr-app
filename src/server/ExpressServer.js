@@ -5,10 +5,7 @@ import express from 'express';
 import meddleware from 'meddleware';
 import handlers from 'shortstop-handlers';
 import shortstopRegex from 'shortstop-regex';
-import bodyParser from 'body-parser';
-import enrouten from 'express-enrouten';
 import 'fetch-everywhere';
-import renderPage from './middleware/renderPage'
 import webpack from 'webpack';
 
 function betterRequire(basePath) {
@@ -56,12 +53,12 @@ export default class ExpressServer {
     return lastConfig;
   }
 
-  addConfiguration(rootDirectory, sourceDirectory = path.join(rootDirectory, 'src')) {
+  addConfiguration(rootDirectory) {
     const configFactory = confit({
       basedir: path.join(rootDirectory, 'config'),
       protocols: {
         path: handlers.path(rootDirectory),
-        sourcepath: handlers.path(sourceDirectory),
+        buildpath: handlers.path(path.join(rootDirectory, 'build')),
         require: betterRequire(rootDirectory),
         regex: shortstopRegex()
       }
@@ -70,15 +67,6 @@ export default class ExpressServer {
   }
 
   async start() {
-    const BUILD_DIRECTORY = `${process.cwd()}/dist`;
-
-    this.app.use(express.urlencoded({ extended: false }));
-    this.app.use(express.static('static'));
-    this.app.use(express.static(`${BUILD_DIRECTORY}/webpack`));
-    this.app.use(bodyParser.urlencoded({ extended: true }));
-    this.app.use(bodyParser.json());
-    this.app.use(enrouten({ directory: 'routes' }));
-
     const config = this.config = await this.configure();
     if (config.get('trustProxy')) {
       this.app.enable('trust proxy');
@@ -89,18 +77,19 @@ export default class ExpressServer {
       next();
     });
 
+    if (process.env.NODE_ENV === 'development') {
+      const compiler = webpack(require('../../webpack.config.js'));
+      this.app.use(require('webpack-dev-middleware')(compiler, {
+        stats: true,
+      }));
+      this.app.use(require('webpack-hot-middleware')(compiler));
+    }
+
     const middleware = config.get('meddleware');
     if (middleware) {
       this.app.use(meddleware(middleware));
     }
 
-    this.app.use(renderPage());
-
-    if (process.env.NODE_ENV === 'development') {
-      const compiler = webpack(require('../../webpack.config.js'));
-      this.app.use(require('webpack-dev-middleware')(compiler));
-      this.app.use(require('webpack-hot-middleware')(compiler));
-    }
     return new Promise((resolve, reject) => {
       this.server.listen(config.get('port'), resolve);
     });

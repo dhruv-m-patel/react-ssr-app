@@ -20,6 +20,7 @@ const plugins = [
 
 if (isDevelopment) {
   plugins.push(new webpack.HotModuleReplacementPlugin());
+  plugins.push(new webpack.NamedModulesPlugin());
   plugins.push(new webpack.NoEmitOnErrorsPlugin());
 }
 
@@ -33,11 +34,15 @@ module.exports = {
   entry: {
     client: !isDevelopment
       ? path.resolve(__dirname, 'src/client/index.js')
-      : [path.resolve(__dirname, 'src/client/index.js'), 'webpack-hot-middleware/client']
+      : [
+        'webpack-hot-middleware/client?reload=true',
+        path.resolve(__dirname, 'src/client/index.js'),
+      ]
   },
   output: {
     filename: isProduction ? '[name].[chunkhash].js' : '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist/webpack'),
+    path: path.resolve(__dirname, './build-static'),
+    publicPath: '/',
   },
   module: {
     rules: [
