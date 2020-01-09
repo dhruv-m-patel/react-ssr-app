@@ -1,5 +1,4 @@
 {
-  "port": "env:PORT",
   "title": "React App",
   "trustProxy": true,
   "logging": {
