@@ -1,5 +1,5 @@
 {
-  "port": 8080,
+  "port": "env:PORT",
   "title": "React App",
   "trustProxy": true,
   "logging": {
