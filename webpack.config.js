@@ -1,5 +1,6 @@
 const path = require('path');
 const dotenv = require('dotenv');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -8,6 +9,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 dotenv.config();
 
 const isProduction = process.env.NODE_ENV === 'production';
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 const plugins = [
   new MiniCssExtractPlugin({
@@ -15,6 +17,12 @@ const plugins = [
   }),
   new ManifestPlugin(),
 ];
+
+if (isDevelopment) {
+  plugins.push(new webpack.HotModuleReplacementPlugin());
+  plugins.push(new webpack.NamedModulesPlugin());
+  plugins.push(new webpack.NoEmitOnErrorsPlugin());
+}
 
 const minificationPlugins = [
   new TerserPlugin(),
@@ -24,11 +32,17 @@ const minificationPlugins = [
 module.exports = {
   mode: process.env.NODE_ENV || 'production',
   entry: {
-    client: path.resolve(__dirname, 'src/client/index.js'),
+    client: !isDevelopment
+      ? path.resolve(__dirname, 'src/client/index.js')
+      : [
+        'webpack-hot-middleware/client?reload=true',
+        path.resolve(__dirname, 'src/client/index.js'),
+      ]
   },
   output: {
     filename: isProduction ? '[name].[chunkhash].js' : '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist/webpack'),
+    path: path.resolve(__dirname, './build-static'),
+    publicPath: '/',
   },
   module: {
     rules: [
