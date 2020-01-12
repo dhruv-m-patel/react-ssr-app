@@ -6,9 +6,20 @@ html {
 }
 
 .page {
-  background-color: var(--backgroundColor);
-  color: var(--white);
   font-size: var(--baseFontSize);
   font-family: Helvetica, sans-serif;
   min-height: 100vh;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.page a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.pad-top-10px {
+  padding-top: 10px;
 }

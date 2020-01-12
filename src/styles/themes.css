@@ -1,0 +1,35 @@
+@import './variables.css';
+
+.light-theme {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.light-theme .text {
+  color: var(--black);
+}
+
+.light-theme table.table {
+  color: var(--black);
+}
+
+.light-theme a {
+  color: var(--dark-blue);
+}
+
+.dark-theme {
+  background-color: var(--backgroundColor);
+  color: var(--white);
+}
+
+.dark-theme .text {
+  color: var(--white)
+}
+
+.dark-theme table.table {
+  color: var(--white);
+}
+
+.dark-theme a {
+  color: var(--blue);
+}
