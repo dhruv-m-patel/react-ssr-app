@@ -82,7 +82,7 @@ export default class ExpressServer {
       const webpack = require('webpack');
       const compiler = webpack(require('../../webpack.config.js'));
       this.app.use(require('webpack-dev-middleware')(compiler, {
-        stats: true,
+        stats: { colors: true },
       }));
       this.app.use(require('webpack-hot-middleware')(compiler));
     }

@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin')
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ const plugins = [
     filename: isProduction ? '[name].[chunkhash].css' : '[name].bundle.css',
   }),
   new ManifestPlugin(),
+  new LoadablePlugin({ writeToDisk: true }),
 ];
 
 if (isDevelopment) {
@@ -63,7 +65,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: isProduction,
+              sourceMap: true,
               importLoaders: 1,
             },
           },
@@ -91,10 +93,11 @@ module.exports = {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        commons: {
-          chunks: 'all',
-          test: /[\\/]node_modules[\\/]/,
+        vendor: {
+          chunks: 'initial',
+          test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,
           name: 'vendor',
+          enforce: true,
         },
       },
     },
