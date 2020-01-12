@@ -11,7 +11,11 @@ import Router from '../../components/router';
 export default function () {
   return function renderPage (req, res) {
     const statsFile = path.join(process.cwd(), './build-static/loadable-stats.json');
-    const extractor = new ChunkExtractor({ statsFile });
+    const extractor = new ChunkExtractor({
+      statsFile,
+      entrypoints: ['client'],
+      publicPath: '/',
+    });
 
     const context = {};
     if (context.url) {
@@ -25,18 +29,14 @@ export default function () {
       req.initialState = preloadedState;
     }
 
-    const content = (
+    const application = extractor.collectChunks(
       <StaticRouter location={req.url} context={context}>
         <Provider store={store}>
           <Router />
         </Provider>
       </StaticRouter>
     );
-
-    const jsx = extractor.collectChunks(content);
-    const scriptTags = extractor.getScriptTags();
-    const linkTags = extractor.getLinkTags();
-    const styleTags = extractor.getStyleTags();
+    const html = ReactDOMServer.renderToString(application);
 
     res.send(`
       <!DOCTYPE html>
@@ -45,15 +45,15 @@ export default function () {
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
           <title>${req.config.get('title')}</title>
-          ${linkTags}
+          ${extractor.getLinkTags()}
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous" />
           <script id="stateData">window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')};</script>
-          ${styleTags}
+          ${extractor.getStyleTags()}
         </head>
         <body>
-          <div id="root">${ReactDOMServer.renderToString(jsx)}</div>
+          <div id="root">${ReactDOMServer.renderToString(html)}</div>
           <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
-          ${scriptTags}
+          ${extractor.getScriptTags()}
         </body>
       </html>
     `);

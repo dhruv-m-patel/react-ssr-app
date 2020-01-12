@@ -17,7 +17,7 @@ const plugins = [
     filename: isProduction ? '[name].[chunkhash].css' : '[name].bundle.css',
   }),
   new ManifestPlugin(),
-  new LoadablePlugin(),
+  new LoadablePlugin({ writeToDisk: true }),
 ];
 
 if (isDevelopment) {
@@ -34,7 +34,7 @@ const minificationPlugins = [
 module.exports = {
   mode: process.env.NODE_ENV || 'production',
   entry: {
-    main: !isDevelopment
+    client: !isDevelopment
       ? path.resolve(__dirname, 'src/client/index.js')
       : [
         'webpack-hot-middleware/client?reload=true',
@@ -65,7 +65,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: isProduction,
+              sourceMap: true,
               importLoaders: 1,
             },
           },
@@ -93,10 +93,11 @@ module.exports = {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        commons: {
-          chunks: 'all',
-          test: /[\\/]node_modules[\\/]/,
+        vendor: {
+          chunks: 'initial',
+          test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,
           name: 'vendor',
+          enforce: true,
         },
       },
     },
