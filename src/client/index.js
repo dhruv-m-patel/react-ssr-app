@@ -1,4 +1,4 @@
-import { loadableReady } from '@loadable/component'
+import { loadableReady } from '@loadable/component';
 import renderApp from './renderApp';
 
 function render() {

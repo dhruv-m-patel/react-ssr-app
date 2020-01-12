@@ -10,7 +10,7 @@
 }
 
 .light-theme table.table {
-  color: var(--black);
+  color: var(--black) !important;
 }
 
 .light-theme a {
@@ -23,11 +23,11 @@
 }
 
 .dark-theme .text {
-  color: var(--white)
+  color: var(--white);
 }
 
 .dark-theme table.table {
-  color: var(--white);
+  color: var(--white) !important;
 }
 
 .dark-theme a {
