@@ -1,6 +1,6 @@
 # react-app
 
-React app with SSR support
+React app with SSR / Redux / Configuration / Code Splitting support
 
 ![CI Status](https://github.com/dhruv-m-patel/react-app/workflows/Continuous%20Integration/badge.svg)
 
@@ -23,3 +23,5 @@ $ npm start
 - StyleLint
 - Husky (Runs lint every commit, runs test before pushing commit)
 - React Bootstrap (For bootstrap style react components)
+- Configuration (using confit / meddleware)
+- Code splitting (using loadable components)
