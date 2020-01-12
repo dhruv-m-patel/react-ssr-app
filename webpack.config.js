@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin')
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ const plugins = [
     filename: isProduction ? '[name].[chunkhash].css' : '[name].bundle.css',
   }),
   new ManifestPlugin(),
+  new LoadablePlugin(),
 ];
 
 if (isDevelopment) {
@@ -32,7 +34,7 @@ const minificationPlugins = [
 module.exports = {
   mode: process.env.NODE_ENV || 'production',
   entry: {
-    client: !isDevelopment
+    main: !isDevelopment
       ? path.resolve(__dirname, 'src/client/index.js')
       : [
         'webpack-hot-middleware/client?reload=true',

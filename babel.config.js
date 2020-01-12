@@ -14,5 +14,6 @@ module.exports = {
     'babel-plugin-css-modules-transform',
     '@babel/plugin-transform-react-inline-elements',
     'babel-plugin-macros',
+    '@loadable/babel-plugin',
   ],
 };
