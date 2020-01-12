@@ -1,9 +1,9 @@
 import React from 'react';
-import Page from '../Page';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Page from '../Page';
 import './HomePage.css';
 
 export default function HomePage() {

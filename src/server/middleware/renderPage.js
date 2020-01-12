@@ -1,6 +1,34 @@
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { Provider } from 'react-redux';
+import { StaticRouter } from 'react-router-dom';
+import createStore from '../../client/store';
+import { DEFAULT_STATE } from '../../reducers/rootReducer';
+import Router from '../../components/router';
+
 export default function () {
-  return function renderPage (req, res, next) {
+  return function renderPage (req, res) {
     const manifest = require(`${process.cwd()}/build-static/manifest.json`);
+
+    const context = {};
+    if (context.url) {
+      res.redirect(context.url);
+      return;
+    }
+
+    const store = createStore(req.initialState || DEFAULT_STATE);
+    const preloadedState = req.initialState || store.getState();
+    if (!req.initialState) {
+      req.initialState = preloadedState;
+    }
+
+    const content = ReactDOMServer.renderToString(
+      <StaticRouter location={req.url} context={context}>
+        <Provider store={store}>
+          <Router />
+        </Provider>
+      </StaticRouter>
+    );
 
     res.send(`
       <!DOCTYPE html>
@@ -11,12 +39,13 @@ export default function () {
           <link rel="stylesheet" href="${manifest['client.css']}" />
           <title>${req.config.get('title')}</title>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous" />
+          <script id="stateData">window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')};</script>
         </head>
         <body>
-          <div id="root"></div>
+          <div id="root">${content}</div>
+          <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
           <script type="text/javascript" src="${manifest['vendor.js']}"></script>
           <script type="text/javascript" src="${manifest['client.js']}"></script>
-          <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
         </body>
       </html>
     `);

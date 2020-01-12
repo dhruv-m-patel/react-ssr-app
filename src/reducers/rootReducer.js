@@ -1,18 +1,18 @@
 import { combineReducers } from 'redux';
 
-import testReducer, { defaultState as testReducerState } from './test-reducer';
+import testReducer from './test-reducer';
 
-const DEFAULT_STATE = {
-  test: testReducerState,
+let DEFAULT_STATE = {
+  test: testReducer(),
 };
 
-let defaultState = DEFAULT_STATE;
 if (typeof window !== 'undefined' && window.__PRELOADED_STATE__) {
-  defaultState = JSON.parse(window.__PRELOADED_STATE__);
+  DEFAULT_STATE = window.__PRELOADED_STATE__;
+  const stateData = document.getElementById('stateData');
+  document.head.removeChild(stateData);
 }
-
-export { defaultState as initialState };
 
 export default combineReducers({
   test: testReducer,
 });
+export { DEFAULT_STATE };
