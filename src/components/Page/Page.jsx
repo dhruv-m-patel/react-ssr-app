@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faToggleOn } from '@fortawesome/free-solid-svg-icons/faToggleOn';
@@ -18,6 +18,11 @@ export default function Page({
   const switchToDarkMode = useCallback(() => {
     setHasSwitchedToDarkMode(!hasSwitchedToDarkMode);
   }, [hasSwitchedToDarkMode]);
+
+  // Detect if user prefers dark mode by looking at window object
+  useEffect(() => {
+    setHasSwitchedToDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }, [window.matchMedia]);
 
   return (
     <Container fluid className={`page ${hasSwitchedToDarkMode ? 'dark-theme' : 'light-theme'}`}>
