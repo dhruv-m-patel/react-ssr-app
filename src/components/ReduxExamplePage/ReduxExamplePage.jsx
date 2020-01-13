@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
 import Page from '../Page';
-import './ReduxExamplePage.css';
+import styles from './ReduxExamplePage.css';
 
 export default function ReduxExamplePage({
   isFetching,
@@ -22,15 +22,15 @@ export default function ReduxExamplePage({
 
   return (
     <Page>
-      <div className="app">
+      <div className={styles.app}>
         <header className="appHeader">
-          <img src="/images/react.svg" className="appLogo" alt="logo" />
+          <img src="/images/react.svg" className={styles.appLogo} alt="logo" />
           <h2>React App</h2>
           <small>A React starter app with SSR support.</small>
         </header>
         <br />
         <br />
-        <Container className="content">
+        <Container className={styles.content}>
           <Row>
             <Col sm={{ offset: 1, span: 10 }} md={{ offset: 3, span: 6 }}>
               <h4>An example page showing Redux integration</h4>
@@ -43,7 +43,7 @@ export default function ReduxExamplePage({
                 </React.Fragment>
               )}
               {!!error && (
-                <label className="error">Error fetching data</label>
+                <label className={styles.error}>Error fetching data</label>
               )}
               {data && data.length > 0 && (
                 <React.Fragment>
@@ -55,7 +55,7 @@ export default function ReduxExamplePage({
               )}
               <br />
               <br />
-              <Link className="appLink" to="/">View Home Page</Link>
+              <Link className={styles.appLink} to="/">View Home Page</Link>
             </Col>
           </Row>
         </Container>

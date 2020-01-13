@@ -4,20 +4,20 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Page from '../Page';
-import './HomePage.css';
+import styles from './HomePage.css';
 
 export default function HomePage() {
   return (
     <Page>
-      <div className="app">
-        <header className="appHeader">
-          <img src="/images/react.svg" className="appLogo" alt="logo" />
+      <div className={styles.app}>
+        <header className={styles.appHeader}>
+          <img src="/images/react.svg" className={styles.appLogo} alt="logo" />
           <h2>React App</h2>
           <small>A React starter app with SSR support.</small>
         </header>
         <br />
         <br />
-        <Container className="content">
+        <Container className={styles.content}>
           <Row>
             <Col sm={{ offset: 1, span: 10 }} md={{ offset: 4, span: 4 }}>
               <h5>This starter-kit was built with:</h5>
@@ -34,7 +34,7 @@ export default function HomePage() {
               </ul>
               <br />
               <br />
-              <Link className="appLink" to="/redux-example">View Example Page with Redux integration</Link>
+              <Link className={styles.appLink} to="/redux-example">View Example Page with Redux integration</Link>
             </Col>
           </Row>
         </Container>

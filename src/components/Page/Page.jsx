@@ -6,7 +6,7 @@ import { faToggleOn } from '@fortawesome/free-solid-svg-icons/faToggleOn';
 import { faToggleOff } from '@fortawesome/free-solid-svg-icons/faToggleOff';
 import Container from 'react-bootstrap/Container';
 import DefaultHelmet from '../DefaultHelmet';
-import './Page.css';
+import styles from './Page.css';
 
 export default function Page({
   title,
@@ -37,15 +37,15 @@ export default function Page({
   }, [hasSwitchedToDarkMode])
 
   return (
-    <Container fluid className={`page ${hasSwitchedToDarkMode ? 'darkTheme' : 'lightTheme'}`}>
+    <Container fluid className={`${styles.page} ${hasSwitchedToDarkMode ? styles.darkTheme : styles.lightTheme}`}>
       <DefaultHelmet title={title} description={description} />
-      <div className="textRight">
+      <div className={styles.textRight}>
         Dark Mode
         <FontAwesomeIcon
           icon={hasSwitchedToDarkMode ? faToggleOn : faToggleOff}
           size="2x"
           onClick={switchToDarkMode}
-          className="clickable padTop10px"
+          className={`${styles.clickable} ${styles.padTop10px}`}
         />
       </div>
       {children}
