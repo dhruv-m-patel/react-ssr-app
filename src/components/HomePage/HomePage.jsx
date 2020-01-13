@@ -9,15 +9,15 @@ import './HomePage.css';
 export default function HomePage() {
   return (
     <Page>
-      <div className="App">
-        <header className="App-header">
-          <img src="/images/react.svg" className="App-logo" alt="logo" />
+      <div className="app">
+        <header className="appHeader">
+          <img src="/images/react.svg" className="appLogo" alt="logo" />
           <h2>React App</h2>
           <small>A React starter app with SSR support.</small>
         </header>
         <br />
         <br />
-        <Container className="Content">
+        <Container className="content">
           <Row>
             <Col sm={{ offset: 1, span: 10 }} md={{ offset: 4, span: 4 }}>
               <h5>This starter-kit was built with:</h5>
@@ -34,7 +34,7 @@ export default function HomePage() {
               </ul>
               <br />
               <br />
-              <Link className="App-link" to="/redux-example">View Example Page with Redux integration</Link>
+              <Link className="appLink" to="/redux-example">View Example Page with Redux integration</Link>
             </Col>
           </Row>
         </Container>

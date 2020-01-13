@@ -1,21 +1,24 @@
 @import '../../styles/variables.css';
 
-.App {
+@keyframes appLogoSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app {
   text-align: center;
 }
 
-.App-logo {
+.appLogo {
   height: 40vmin;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+.appHeader {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,15 +26,16 @@
   font-size: calc(10px + 2vmin);
 }
 
-.Content {
+.content {
   text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.error {
+  color: var(--error);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .appLogo {
+    animation: appLogoSpin infinite 20s linear;
   }
 }

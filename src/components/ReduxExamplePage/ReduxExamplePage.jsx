@@ -22,15 +22,15 @@ export default function ReduxExamplePage({
 
   return (
     <Page>
-      <div className="App">
-        <header className="App-header">
-          <img src="/images/react.svg" className="App-logo" alt="logo" />
+      <div className="app">
+        <header className="appHeader">
+          <img src="/images/react.svg" className="appLogo" alt="logo" />
           <h2>React App</h2>
           <small>A React starter app with SSR support.</small>
         </header>
         <br />
         <br />
-        <Container className="Content">
+        <Container className="content">
           <Row>
             <Col sm={{ offset: 1, span: 10 }} md={{ offset: 3, span: 6 }}>
               <h4>An example page showing Redux integration</h4>
@@ -55,7 +55,7 @@ export default function ReduxExamplePage({
               )}
               <br />
               <br />
-              <Link className="App-link" to="/">View Home Page</Link>
+              <Link className="appLink" to="/">View Home Page</Link>
             </Col>
           </Row>
         </Container>
