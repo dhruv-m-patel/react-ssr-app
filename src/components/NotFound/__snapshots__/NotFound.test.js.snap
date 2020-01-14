@@ -2,15 +2,15 @@
 
 exports[`NotFound it should render 1`] = `
 <div
-  className="page light-theme container-fluid"
+  className="Page__page___11SaW Page__lightTheme___ZzJ_L container-fluid"
 >
   <div
-    className="text-right"
+    className="Page__textRight___80Bv0"
   >
     Dark Mode
     <svg
       aria-hidden="true"
-      className="svg-inline--fa fa-toggle-off fa-w-18 fa-2x clickable pad-top-10px"
+      className="svg-inline--fa fa-toggle-off fa-w-18 fa-2x Page__clickable___17a83 Page__padTop10px___2MDcB"
       data-icon="toggle-off"
       data-prefix="fas"
       focusable="false"
