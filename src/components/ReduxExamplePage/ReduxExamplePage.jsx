@@ -23,7 +23,7 @@ export default function ReduxExamplePage({
   return (
     <Page>
       <div className={styles.app}>
-        <header className="appHeader">
+        <header className={styles.appHeader}>
           <img src="/images/react.svg" className={styles.appLogo} alt="logo" />
           <h2>React App</h2>
           <small>A React starter app with SSR support.</small>
