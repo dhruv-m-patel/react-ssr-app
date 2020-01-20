@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "build:server": "babel ./src --out-dir build",
-    "build:client": "webpack",
+    "build:client": "BABEL_ENV=webpack webpack",
     "build": "npm run build:server && npm run build:client",
     "clean": "rimraf build && rimraf build-static",
     "start": "node ./build/server/index.js",
@@ -67,7 +67,8 @@
     "redux-api-middleware": "^3.0.1",
     "shortstop-handlers": "^1.0.1",
     "shortstop-regex": "0.0.1",
-    "store": "^2.0.12"
+    "store": "^2.0.12",
+    "webpack": "^4.41.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
@@ -87,7 +88,8 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-css-modules-transform": "^1.6.2",
     "babel-plugin-macros": "^2.6.1",
-    "css-loader": "^3.2.0",
+    "css-loader": "^3.4.2",
+    "cssnano": "^4.1.10",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.5.1",
@@ -104,17 +106,16 @@
     "mini-css-extract-plugin": "^0.8.0",
     "nodemon": "^1.19.3",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "postcss-cssnext": "^3.1.0",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
     "react-test-renderer": "^16.10.2",
     "rimraf": "^3.0.0",
     "style-loader": "^1.0.0",
     "stylelint": "^11.1.1",
     "stylelint-config-recommended": "^3.0.0",
     "terser-webpack-plugin": "^2.1.3",
-    "webpack": "^4.41.1",
-    "webpack-cli": "^3.3.9",
+    "webpack-cli": "^3.3.10",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-manifest-plugin": "^2.2.0"

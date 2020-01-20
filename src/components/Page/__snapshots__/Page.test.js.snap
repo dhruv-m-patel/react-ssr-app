@@ -2,15 +2,15 @@
 
 exports[`Page it should render 1`] = `
 <div
-  className="page light-theme container-fluid"
+  className="page lightTheme container-fluid"
 >
   <div
-    className="text-right"
+    className="textRight"
   >
     Dark Mode
     <svg
       aria-hidden="true"
-      className="svg-inline--fa fa-toggle-off fa-w-18 fa-2x clickable pad-top-10px"
+      className="svg-inline--fa fa-toggle-off fa-w-18 fa-2x clickable padTop10px"
       data-icon="toggle-off"
       data-prefix="fas"
       focusable="false"
@@ -27,6 +27,31 @@ exports[`Page it should render 1`] = `
       />
     </svg>
   </div>
-  <div />
+  <div
+    className="app"
+  >
+    <header
+      className="appHeader"
+    >
+      <img
+        alt="logo"
+        className="appLogo"
+        src="/images/react.svg"
+      />
+      <h2>
+        React App
+      </h2>
+      <small>
+        A React starter app with SSR support.
+      </small>
+    </header>
+    <br />
+    <br />
+    <div
+      className="content container"
+    >
+      <div />
+    </div>
+  </div>
 </div>
 `;

@@ -2,15 +2,15 @@
 
 exports[`HomePage it should render 1`] = `
 <div
-  className="page light-theme container-fluid"
+  className="page lightTheme container-fluid"
 >
   <div
-    className="text-right"
+    className="textRight"
   >
     Dark Mode
     <svg
       aria-hidden="true"
-      className="svg-inline--fa fa-toggle-off fa-w-18 fa-2x clickable pad-top-10px"
+      className="svg-inline--fa fa-toggle-off fa-w-18 fa-2x clickable padTop10px"
       data-icon="toggle-off"
       data-prefix="fas"
       focusable="false"
@@ -28,14 +28,14 @@ exports[`HomePage it should render 1`] = `
     </svg>
   </div>
   <div
-    className="App"
+    className="app"
   >
     <header
-      className="App-header"
+      className="appHeader"
     >
       <img
         alt="logo"
-        className="App-logo"
+        className="appLogo"
         src="/images/react.svg"
       />
       <h2>
@@ -48,7 +48,7 @@ exports[`HomePage it should render 1`] = `
     <br />
     <br />
     <div
-      className="Content container"
+      className="content container"
     >
       <div
         className="row"
@@ -112,7 +112,6 @@ exports[`HomePage it should render 1`] = `
           <br />
           <br />
           <a
-            className="App-link"
             href="/redux-example"
             onClick={[Function]}
           >

@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const LoadablePlugin = require('@loadable/webpack-plugin')
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 dotenv.config();
 
@@ -13,11 +13,12 @@ const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const plugins = [
-  new MiniCssExtractPlugin({
-    filename: isProduction ? '[name].[chunkhash].css' : '[name].bundle.css',
-  }),
   new ManifestPlugin(),
   new LoadablePlugin({ writeToDisk: true }),
+  new MiniCssExtractPlugin({
+    filename: isProduction ? '[name].[chunkhash].css' : '[name].bundle.css',
+    ignoreOrder: true,
+  }),
 ];
 
 if (isDevelopment) {
@@ -27,8 +28,18 @@ if (isDevelopment) {
 }
 
 const minificationPlugins = [
-  new TerserPlugin(),
-  new OptimizeCSSAssetsPlugin({}),
+  new TerserPlugin({
+    sourceMap: true,
+    cache: true,
+    parallel: true,
+  }),
+  new OptimizeCSSAssetsPlugin({
+    cssProcessorOptions: {
+      map: {
+        inline: false,
+      },
+    },
+  }),
 ];
 
 module.exports = {
@@ -65,25 +76,12 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
+              sourceMap: isProduction,
               importLoaders: 1,
             },
           },
           {
             loader: 'postcss-loader',
-            options: {
-              config: { path: path.resolve(__dirname, 'postcss.config.js') },
-              plugins: () => [
-                // eslint-disable-next-line global-require
-                require('postcss-import'),
-                // eslint-disable-next-line global-require
-                require('postcss-cssnext')({
-                  // If you don't set this, you get the GB preset default,
-                  // which is fine in most cases
-                  browsers: ['> 1%', 'last 2 versions'],
-                }),
-              ],
-            },
           },
         ],
       },
