@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
+import classnames from 'classnames/bind';
 import Page from '../Page';
+import styles from './ReduxExamplePage.css';
+
+const cx = classnames.bind(styles);
 
 export default function ReduxExamplePage({
   isFetching,
@@ -32,7 +36,7 @@ export default function ReduxExamplePage({
             </React.Fragment>
           )}
           {!!error && (
-            <label className="error">Error fetching data</label>
+            <label className={cx('error')}>Error fetching data</label>
           )}
           {data && data.length > 0 && (
             <React.Fragment>
