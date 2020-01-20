@@ -18,10 +18,11 @@ $ npm start
 - Webpack v4
 - Babel v7
 - Express v4
+- Configuration (using confit / meddleware)
+- Code splitting (using loadable components)
+- React Bootstrap (For bootstrap style react components)
+- Storybook
 - Jest
 - ESLint
 - StyleLint
 - Husky (Runs lint every commit, runs test before pushing commit)
-- React Bootstrap (For bootstrap style react components)
-- Configuration (using confit / meddleware)
-- Code splitting (using loadable components)
