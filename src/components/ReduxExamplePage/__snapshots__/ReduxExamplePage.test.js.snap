@@ -2,15 +2,15 @@
 
 exports[`ReduxExamplePage it should render 1`] = `
 <div
-  className="Page__page___11SaW Page__lightTheme___ZzJ_L container-fluid"
+  className="page lightTheme container-fluid"
 >
   <div
-    className="Page__textRight___80Bv0"
+    className="textRight"
   >
     Dark Mode
     <svg
       aria-hidden="true"
-      className="svg-inline--fa fa-toggle-off fa-w-18 fa-2x Page__clickable___17a83 Page__padTop10px___2MDcB"
+      className="svg-inline--fa fa-toggle-off fa-w-18 fa-2x clickable padTop10px"
       data-icon="toggle-off"
       data-prefix="fas"
       focusable="false"
@@ -28,14 +28,14 @@ exports[`ReduxExamplePage it should render 1`] = `
     </svg>
   </div>
   <div
-    className="ReduxExamplePage__app___3E8wN"
+    className="app"
   >
     <header
-      className="ReduxExamplePage__appHeader___1gagX"
+      className="appHeader"
     >
       <img
         alt="logo"
-        className="ReduxExamplePage__appLogo___27BXl"
+        className="appLogo"
         src="/images/react.svg"
       />
       <h2>
@@ -48,7 +48,7 @@ exports[`ReduxExamplePage it should render 1`] = `
     <br />
     <br />
     <div
-      className="ReduxExamplePage__content___21ihI container"
+      className="content container"
     >
       <div
         className="row"
