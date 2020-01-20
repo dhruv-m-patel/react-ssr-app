@@ -77,23 +77,11 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: isProduction,
-              modules: {
-                localIdentName: '[name]__[local]--[hash:base64:5]',
-              },
               importLoaders: 1,
             },
           },
           {
             loader: 'postcss-loader',
-            options: {
-              config: { path: path.resolve(__dirname, 'postcss.config.js') },
-              plugins: () => [
-                require('postcss-import'),
-                require('postcss-cssnext')({
-                  browsers: ['> 1%', 'last 2 versions'],
-                }),
-              ],
-            },
           },
         ],
       },
