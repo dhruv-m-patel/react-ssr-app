@@ -6,7 +6,7 @@ import { faToggleOn } from '@fortawesome/free-solid-svg-icons/faToggleOn';
 import { faToggleOff } from '@fortawesome/free-solid-svg-icons/faToggleOff';
 import Container from 'react-bootstrap/Container';
 import DefaultHelmet from '../DefaultHelmet';
-import styles from './Page.css';
+import './Page.css';
 
 export default function Page({
   title,
@@ -37,18 +37,29 @@ export default function Page({
   }, [hasSwitchedToDarkMode])
 
   return (
-    <Container fluid className={`${styles.page} ${hasSwitchedToDarkMode ? styles.darkTheme : styles.lightTheme}`}>
+    <Container fluid className={`page ${ hasSwitchedToDarkMode ? 'darkTheme' : 'lightTheme'}`}>
       <DefaultHelmet title={title} description={description} />
-      <div className={styles.textRight}>
+      <div className="textRight">
         Dark Mode
         <FontAwesomeIcon
           icon={hasSwitchedToDarkMode ? faToggleOn : faToggleOff}
           size="2x"
           onClick={switchToDarkMode}
-          className={`${styles.clickable} ${styles.padTop10px}`}
+          className="clickable padTop10px"
         />
       </div>
-      {children}
+      <div className="app">
+        <header className="appHeader">
+          <img src="/images/react.svg" className="appLogo" alt="logo" />
+          <h2>React App</h2>
+          <small>A React starter app with SSR support.</small>
+        </header>
+        <br />
+        <br />
+        <Container className="content">
+          {children}
+        </Container>
+      </div>
     </Container>
   );
 }

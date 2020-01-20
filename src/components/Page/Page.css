@@ -1,5 +1,14 @@
 @import '../../styles/variables.css';
 
+@keyframes appLogoSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 html {
   font-size: 100%;
   height: 100vh;
@@ -60,4 +69,31 @@ html {
 .page a:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.app {
+  text-align: center;
+}
+
+.appLogo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.appHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.content {
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .appLogo {
+    animation: appLogoSpin infinite 20s linear;
+  }
 }
