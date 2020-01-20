@@ -2,15 +2,15 @@
 
 exports[`Page it should render 1`] = `
 <div
-  className="page lightTheme container-fluid"
+  className="Page__page___11SaW Page__lightTheme___ZzJ_L container-fluid"
 >
   <div
-    className="textRight"
+    className="Page__textRight___80Bv0"
   >
     Dark Mode
     <svg
       aria-hidden="true"
-      className="svg-inline--fa fa-toggle-off fa-w-18 fa-2x clickable padTop10px"
+      className="svg-inline--fa fa-toggle-off fa-w-18 fa-2x Page__clickable___17a83 Page__padTop10px___2MDcB"
       data-icon="toggle-off"
       data-prefix="fas"
       focusable="false"
@@ -28,14 +28,14 @@ exports[`Page it should render 1`] = `
     </svg>
   </div>
   <div
-    className="app"
+    className="Page__app___25fET"
   >
     <header
-      className="appHeader"
+      className="Page__appHeader___3GNlT"
     >
       <img
         alt="logo"
-        className="appLogo"
+        className="Page__appLogo___3bWCs"
         src="/images/react.svg"
       />
       <h2>
@@ -48,7 +48,7 @@ exports[`Page it should render 1`] = `
     <br />
     <br />
     <div
-      className="content container"
+      className="Page__content___rCsmc container"
     >
       <div />
     </div>
