@@ -63,6 +63,9 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+        options: {
+          envName: 'webpack',
+        }
       },
       {
         test: /\.css$/,
@@ -77,6 +80,9 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: isProduction,
+              modules: {
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
               importLoaders: 1,
             },
           },
