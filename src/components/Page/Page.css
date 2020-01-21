@@ -14,12 +14,6 @@ html {
   height: 100vh;
 }
 
-.page {
-  font-size: var(--baseFontSize);
-  font-family: Helvetica, sans-serif;
-  min-height: 100vh;
-}
-
 .clickable {
   cursor: pointer;
 }
@@ -35,40 +29,46 @@ html {
 .darkTheme {
   background-color: var(--backgroundColor);
   color: var(--white);
-}
 
-.darkTheme a {
-  color: var(--blue);
-}
+  & a {
+    color: var(--blue);
+  }
 
-.darkTheme table.table {
-  color: var(--white) !important;
-}
+  & table.table {
+    color: var(--white) !important;
+  }
 
-.darkTheme .text {
-  color: var(--white);
+  & .text {
+    color: var(--white);
+  }
 }
 
 .lightTheme {
   background-color: var(--white);
   color: var(--black);
+
+  & a {
+    color: var(--dark-blue);
+  }
+
+  & table.table {
+    color: var(--black) !important;
+  }
+
+  & .text {
+    color: var(--black);
+  }
 }
 
-.lightTheme a {
-  color: var(--dark-blue);
-}
+.page {
+  font-size: var(--baseFontSize);
+  font-family: Helvetica, sans-serif;
+  min-height: 100vh;
 
-.lightTheme table.table {
-  color: var(--black) !important;
-}
-
-.lightTheme .text {
-  color: var(--black);
-}
-
-.page a:hover {
-  text-decoration: underline;
-  cursor: pointer;
+  & a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 
 .app {
