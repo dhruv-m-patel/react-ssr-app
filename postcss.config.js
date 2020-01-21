@@ -3,7 +3,7 @@ module.exports = {
     'postcss-import': {},
     'postcss-preset-env': {
       browsers: ['> 1%', 'last 2 versions'],
-      stage: 3,
+      stage: 1,
     },
     cssnano: {
       discardUnused: true,
