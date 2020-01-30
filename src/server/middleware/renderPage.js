@@ -51,7 +51,7 @@ export default function () {
           ${extractor.getStyleTags()}
         </head>
         <body>
-          <div id="root">${ReactDOMServer.renderToString(html)}</div>
+          <div id="root">${html}</div>
           <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
           ${extractor.getScriptTags()}
         </body>
