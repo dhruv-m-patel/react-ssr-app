@@ -10,6 +10,12 @@ import Router from '../../components/router';
 
 export default function () {
   return function renderPage (req, res) {
+    // Redirect to secure url in production
+    if (req.config.get('env:env') === 'production' && req.protocol === 'http') {
+      res.redirect(`https://${req.headers.host}${req.originalUrl}`);
+      return;
+    }
+
     const statsFile = path.join(process.cwd(), './build-static/loadable-stats.json');
     const extractor = new ChunkExtractor({
       statsFile,
@@ -40,10 +46,11 @@ export default function () {
 
     res.send(`
       <!DOCTYPE html>
-      <html>
+      <html lang="en-US">
         <head>
           <meta charset="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" priority="1" />
+          <meta name="ie-compat" content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
           <title>${req.config.get('title')}</title>
           ${extractor.getLinkTags()}
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous" />
@@ -52,8 +59,8 @@ export default function () {
         </head>
         <body>
           <div id="root">${html}</div>
-          <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
           ${extractor.getScriptTags()}
+          <script async src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
         </body>
       </html>
     `);

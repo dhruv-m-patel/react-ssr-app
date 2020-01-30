@@ -1,5 +1,5 @@
-import {getTestData} from '../models/test-data'
-import preloadDefaultState from '../../lib/utils/preloadDefaultState'
+import { getTestData } from '../models/test-data';
+import preloadDefaultState from '../../lib/utils/preloadDefaultState';
 
 export default async function hello(router) {
   router.get('/', async (req, res, next) => {

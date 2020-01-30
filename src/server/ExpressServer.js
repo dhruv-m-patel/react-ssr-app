@@ -71,6 +71,9 @@ export default class ExpressServer {
       this.app.enable('trust proxy');
     }
 
+    // disable X-Powered-By header
+    this.app.disable('x-powered-by')
+
     this.app.use((req, res, next) => {
       req.config = config;
       next();
