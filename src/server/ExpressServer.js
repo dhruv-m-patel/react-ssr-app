@@ -6,31 +6,8 @@ import meddleware from 'meddleware';
 import handlers from 'shortstop-handlers';
 import shortstopRegex from 'shortstop-regex';
 import 'fetch-everywhere';
-
-function betterRequire(basePath) {
-  const baseRequire = handlers.require(basePath);
-  return function hashRequire(v) {
-    const [moduleName, func] = v.split('#');
-    const module = baseRequire(moduleName);
-    if (func) {
-      if (module[func]) {
-        return module[func];
-      }
-      return baseRequire(v);
-    }
-    return module;
-  };
-}
-
-const getConfiguration = configFactory => new Promise((resolve, reject) => {
-  configFactory.create((err, config) => {
-    if (err) {
-      reject(err);
-      return;
-    }
-    resolve(config);
-  });
-});
+import getConfiguration from '../lib/utils/getConfiguration'
+import betterRequire from '../lib/utils/betterRequire'
 
 export default class ExpressServer {
   constructor() {
@@ -59,7 +36,8 @@ export default class ExpressServer {
         path: handlers.path(rootDirectory),
         buildpath: handlers.path(path.join(rootDirectory, 'build')),
         require: betterRequire(rootDirectory),
-        regex: shortstopRegex()
+        regex: shortstopRegex(),
+        env: handlers.env(),
       }
     });
     this.configurations.push(configFactory);

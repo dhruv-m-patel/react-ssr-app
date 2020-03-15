@@ -1,4 +1,4 @@
-import Tester from '../../../tests/Tester';
+import Tester from '../../../../tests/Tester';
 import ReduxExamplePage from './ReduxExamplePage';
 
 const tester = new Tester();

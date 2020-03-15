@@ -5,8 +5,8 @@ import path from 'path';
 import { StaticRouter } from 'react-router-dom';
 import { ChunkExtractor } from '@loadable/server'
 import createStore from '../../client/store';
-import { DEFAULT_STATE } from '../../reducers/rootReducer';
-import Router from '../../components/router';
+import { DEFAULT_STATE } from '../../client/redux/reducers';
+import Router from '../../common/router';
 
 export default function () {
   return function renderPage (req, res) {

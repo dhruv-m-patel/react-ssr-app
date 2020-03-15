@@ -59,6 +59,12 @@
         ]
       }
     },
+    "gzipCompression": {
+      "priority": 26,
+      "module": {
+        "name": "compression"
+      }
+    },
     "routes": {
       "priority": 26,
       "module": {

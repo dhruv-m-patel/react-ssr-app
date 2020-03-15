@@ -1,4 +1,4 @@
-import Tester from '../../../tests/Tester';
+import Tester from '../../../../tests/Tester';
 import HomePage from './HomePage';
 
 const tester = new Tester();

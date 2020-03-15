@@ -1,5 +1,5 @@
 import React from 'react';
-import Tester from '../../../tests/Tester';
+import Tester from '../../../../tests/Tester';
 import Page from './Page';
 
 const tester = new Tester();
