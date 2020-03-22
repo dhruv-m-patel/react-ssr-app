@@ -5,6 +5,9 @@
     "format": "combined",
     "options": {}
   },
+  "db": {
+    "dbType": "env:DB_DRIVER"
+  },
   "meddleware": {
     "logger": {
       "priority": 20,
@@ -71,7 +74,7 @@
         "name": "express-enrouten",
         "arguments": [
           {
-            "directory": "buildpath:./server/routes"
+            "directory": "sourcepath:./server/routes"
           }
         ]
       }
@@ -79,7 +82,7 @@
     "renderPage": {
       "priority": 100,
       "module": {
-        "name": "buildpath:./server/middleware/renderPage",
+        "name": "sourcepath:./server/middleware/renderPage",
         "method": "default"
       }
     }

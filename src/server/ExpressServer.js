@@ -8,6 +8,8 @@ import shortstopRegex from 'shortstop-regex';
 import 'fetch-everywhere';
 import getConfiguration from '../lib/utils/getConfiguration'
 import betterRequire from '../lib/utils/betterRequire'
+import { connectMysqlDb } from '../lib/clients/mysql'
+import { connectPostgresDb } from '../lib/clients/postgres'
 
 export default class ExpressServer {
   constructor() {
@@ -34,7 +36,7 @@ export default class ExpressServer {
       basedir: path.join(rootDirectory, 'config'),
       protocols: {
         path: handlers.path(rootDirectory),
-        buildpath: handlers.path(path.join(rootDirectory, 'build')),
+        sourcepath: handlers.path(path.join(rootDirectory, process.env.NODE_ENV === 'development' ? 'src' : 'build')),
         require: betterRequire(rootDirectory),
         regex: shortstopRegex(),
         env: handlers.env(),
@@ -66,6 +68,19 @@ export default class ExpressServer {
         stats: { colors: true },
       }));
       this.app.use(require('webpack-hot-middleware')(compiler));
+    }
+
+    const dbType = config.get('db:dbType');
+    if (['mysql', 'pg'].includes(dbType)) {
+      const connectDb = dbType === 'mysql' ? connectMysqlDb : connectPostgresDb;
+      connectDb()
+        .then((database) => {
+          this.app.db = database;
+          console.log(`${dbType === 'mysql' ? 'MySQL' : 'Postgres'} database connected...`);
+        })
+        .catch((err) => {
+          console.log(`Error connecting to database: ${err.message}`, err.stack);
+        });
     }
 
     const middleware = config.get('meddleware');
