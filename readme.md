@@ -58,6 +58,6 @@ $ npm start
 - ESLint
 - StyleLint
 
-Used `Husky` to run linter on every commit, runs test before pushing commits
+Uses `Husky` to run linter on every commit, runs test before pushing commits
 
 Supports Configuration (using confit / meddleware), Code splitting (using loadable components), React Bootstrap (For bootstrap style react components)
