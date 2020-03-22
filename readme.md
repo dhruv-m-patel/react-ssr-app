@@ -9,7 +9,7 @@ React app with SSR / Redux / Configuration / Code Splitting support
 ```
 $ git clone git@github.com:dhruv-m-patel/react-app.git
 $ npm install
-$ npm start
+$ npm run start-dev
 ```
 
 ### Using this app
