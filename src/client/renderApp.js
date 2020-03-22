@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import createStore from './store';
-import Router from '../components/router';
+import Router from '../common/router';
 
 export default function renderApp() {
   const supportsHistory = 'pushState' in window.history;

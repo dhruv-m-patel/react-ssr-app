@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ReduxExamplePage from './ReduxExamplePage';
-import { fetchTestData } from '../../reducers/actions';
+import { fetchTestData } from '../../../client/redux/actions';
 
 function mapStateToProps({ test }) {
   return {

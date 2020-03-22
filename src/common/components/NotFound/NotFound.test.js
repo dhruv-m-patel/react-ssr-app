@@ -1,5 +1,4 @@
-import React from 'react';
-import Tester from '../../../tests/Tester';
+import Tester from '../../../../tests/Tester';
 import NotFound from './NotFound';
 
 const tester = new Tester();

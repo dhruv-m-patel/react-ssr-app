@@ -1,4 +1,4 @@
-import { DEFAULT_STATE } from '../../reducers/rootReducer';
+import { DEFAULT_STATE } from '../../client/redux/reducers';
 
 export default function preloadDefaultState(req) {
   if (!req.initialState) {
