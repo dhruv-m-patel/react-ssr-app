@@ -1,8 +1,22 @@
-import server from './ExpressServer';
+import ExpressApp from '@dhruv-m-patel/express-app';
 import { connectMysqlDb } from '../lib/clients/mysql';
 import { connectPostgresDb } from '../lib/clients/postgres';
 
+const server = new ExpressApp();
+
+// Add hot-reloading support in development environment
+if (process.env.NODE_ENV === 'development') {
+  const webpack = require('webpack');
+  const compiler = webpack(require('../../webpack.config.js'));
+  server.app.use(require('webpack-dev-middleware')(compiler, {
+    stats: { colors: true },
+  }));
+  server.app.use(require('webpack-hot-middleware')(compiler));
+}
+
+// start the app
 server.start().then((port) => {
+  // Add database support if config sets it
   const dbType = server.config.get('db:dbType');
   if (['mysql', 'pg'].includes(dbType)) {
     const connectDb = dbType === 'mysql' ? connectMysqlDb : connectPostgresDb;

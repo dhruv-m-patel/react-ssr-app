@@ -43,7 +43,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.8.7",
-    "@dhruv-m-patel/express-app": "git+https://github.com/dhruv-m-patel/express-app.git",
+    "@dhruv-m-patel/express-app": "git+https://github.com/dhruv-m-patel/express-app.git#release/1.0.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
