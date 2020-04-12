@@ -1,4 +1,4 @@
-import ExpressApp from '@dhruv-m-patel/express-app';
+import ExpressApp from 'express-app';
 import { connectMysqlDb } from '../lib/clients/mysql';
 import { connectPostgresDb } from '../lib/clients/postgres';
 

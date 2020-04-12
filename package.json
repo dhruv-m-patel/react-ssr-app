@@ -43,7 +43,6 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.8.7",
-    "@dhruv-m-patel/express-app": "git+https://github.com/dhruv-m-patel/express-app.git#release/1.0.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
@@ -56,6 +55,7 @@
     "db-migrate": "^0.11.6",
     "db-migrate-mysql": "^2.1.0",
     "db-migrate-pg": "^1.0.0",
+    "express-app": "git+https://github.com/dhruv-m-patel/express-app.git#v1.0.1",
     "express-enrouten": "^1.3.0",
     "fast-deep-equal": "^2.0.1",
     "meddleware": "^3.0.3",
