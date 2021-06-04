@@ -26,7 +26,10 @@ export async function executeQuery(req, query, params = []) {
           reject(error);
         }
 
-        if (query.trim().toLowerCase().startsWith('insert') && result.affectedRows === 1) {
+        if (
+          query.trim().toLowerCase().startsWith('insert') &&
+          result.affectedRows === 1
+        ) {
           resolve(result.insertId);
         } else {
           resolve(result);

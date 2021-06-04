@@ -11,11 +11,7 @@ import styles from './Page.css';
 
 const cx = classnames.bind(styles);
 
-export default function Page({
-  title,
-  description,
-  children,
-}) {
+export default function Page({ title, description, children }) {
   const [hasSwitchedToDarkMode, setHasSwitchedToDarkMode] = useState(undefined);
 
   const switchToDarkMode = useCallback(() => {
@@ -29,7 +25,9 @@ export default function Page({
       let shouldSetDarkModeInitially = false;
       const darkModeSetting = store.get('enableDarkMode');
       if (darkModeSetting === undefined && typeof window !== 'undefined') {
-        shouldSetDarkModeInitially = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        shouldSetDarkModeInitially =
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches;
       } else {
         shouldSetDarkModeInitially = darkModeSetting;
       }
@@ -37,10 +35,16 @@ export default function Page({
       setHasSwitchedToDarkMode(shouldSetDarkModeInitially);
       store.set('enableDarkMode', shouldSetDarkModeInitially);
     }
-  }, [hasSwitchedToDarkMode])
+  }, [hasSwitchedToDarkMode]);
 
   return (
-    <Container fluid className={cx('page', { darkTheme: hasSwitchedToDarkMode, lightTheme: !hasSwitchedToDarkMode })}>
+    <Container
+      fluid
+      className={cx('page', {
+        darkTheme: hasSwitchedToDarkMode,
+        lightTheme: !hasSwitchedToDarkMode,
+      })}
+    >
       <DefaultHelmet title={title} description={description} />
       <div className={cx('textRight')}>
         Dark Mode
@@ -59,9 +63,7 @@ export default function Page({
         </header>
         <br />
         <br />
-        <Container className={cx('content')}>
-          {children}
-        </Container>
+        <Container className={cx('content')}>{children}</Container>
       </div>
     </Container>
   );
@@ -76,4 +78,4 @@ Page.propTypes = {
 Page.defaultProps = {
   title: undefined,
   description: undefined,
-}
+};

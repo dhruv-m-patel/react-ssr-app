@@ -31,10 +31,9 @@ export default class Tester {
       return;
     }
 
-    const dom = new JSDOM(
-      '<!doctype html><html><body></body></html>',
-      { url: 'http://localhost/' },
-    );
+    const dom = new JSDOM('<!doctype html><html><body></body></html>', {
+      url: 'http://localhost/',
+    });
     const { window } = dom;
     global.window = window;
     global.document = window.document;
@@ -43,8 +42,8 @@ export default class Tester {
     };
 
     const props = Object.getOwnPropertyNames(window)
-      .filter(prop => typeof global[prop] === 'undefined')
-      .map(prop => Object.getOwnPropertyDescriptor(window, prop));
+      .filter((prop) => typeof global[prop] === 'undefined')
+      .map((prop) => Object.getOwnPropertyDescriptor(window, prop));
 
     Object.defineProperties(global, props);
   }
@@ -52,11 +51,11 @@ export default class Tester {
   getMountedInstance(Component, props) {
     this.setupDomEnvironment();
 
-    const component = mount((
+    const component = mount(
       <MemoryRouter>
         <Component {...props} />
       </MemoryRouter>
-    ));
+    );
 
     return {
       // Stateless components return null when using instance() in React 16.X
@@ -68,10 +67,12 @@ export default class Tester {
   }
 
   getSnapshot(Component, props) {
-    return renderer.create(
-      <MemoryRouter>
-        <Component {...props} />
-      </MemoryRouter>
-    ).toJSON();
+    return renderer
+      .create(
+        <MemoryRouter>
+          <Component {...props} />
+        </MemoryRouter>
+      )
+      .toJSON();
   }
 }

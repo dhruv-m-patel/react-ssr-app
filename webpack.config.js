@@ -48,9 +48,9 @@ module.exports = {
     client: !isDevelopment
       ? path.resolve(__dirname, 'src/client/index.js')
       : [
-        'webpack-hot-middleware/client?reload=true',
-        path.resolve(__dirname, 'src/client/index.js'),
-      ]
+          'webpack-hot-middleware/client?reload=true',
+          path.resolve(__dirname, 'src/client/index.js'),
+        ],
   },
   output: {
     filename: isProduction ? '[name].[chunkhash].js' : '[name].bundle.js',
@@ -65,7 +65,7 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           envName: 'webpack',
-        }
+        },
       },
       {
         test: /\.css$/,
@@ -105,7 +105,7 @@ module.exports = {
         },
       },
     },
-    ...isProduction && { minimizer: minificationPlugins }
+    ...(isProduction && { minimizer: minificationPlugins }),
   },
   resolve: {
     extensions: ['.js', '.jsx', '.css', '.json'],

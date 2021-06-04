@@ -42,7 +42,9 @@ export default function ReduxExamplePage({
             <React.Fragment>
               <h5>Following data was fetched using Redux</h5>
               <ul>
-                {data.map(item => <li key={item}>{item}</li>)}
+                {data.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
             </React.Fragment>
           )}

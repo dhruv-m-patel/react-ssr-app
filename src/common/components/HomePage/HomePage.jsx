@@ -17,13 +17,34 @@ export default function HomePage() {
             <li>Webpack v4</li>
             <li>Babel v7</li>
             <li>Express v4</li>
-            <li>Configuration (using <a href="https://www.npmjs.com/package/confit" target="blank">confit</a> / <a href="https://www.npmjs.com/package/meddleware" target="blank">meddleware</a>)</li>
-            <li>Code splitting (using <a href="https://loadable-components.com/docs/getting-started/" target="blank">Loadable Components</a>)</li>
+            <li>
+              Configuration (using{' '}
+              <a href="https://www.npmjs.com/package/confit" target="blank">
+                confit
+              </a>{' '}
+              /{' '}
+              <a href="https://www.npmjs.com/package/meddleware" target="blank">
+                meddleware
+              </a>
+              )
+            </li>
+            <li>
+              Code splitting (using{' '}
+              <a
+                href="https://loadable-components.com/docs/getting-started/"
+                target="blank"
+              >
+                Loadable Components
+              </a>
+              )
+            </li>
             <li>React Bootstrap</li>
           </ul>
           <br />
           <br />
-          <Link to="/redux-example">View Example Page with Redux integration</Link>
+          <Link to="/redux-example">
+            View Example Page with Redux integration
+          </Link>
         </Col>
       </Row>
     </Page>

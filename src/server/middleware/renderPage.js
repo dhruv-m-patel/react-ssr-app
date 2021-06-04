@@ -3,20 +3,23 @@ import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 import path from 'path';
 import { StaticRouter } from 'react-router-dom';
-import { ChunkExtractor } from '@loadable/server'
+import { ChunkExtractor } from '@loadable/server';
 import createStore from '../../client/store';
 import { DEFAULT_STATE } from '../../client/redux/reducers';
 import Router from '../../common/router';
 
 export default function () {
-  return function renderPage (req, res) {
+  return function renderPage(req, res) {
     // Redirect to secure url in production
     if (req.config.get('env:env') === 'production' && req.protocol === 'http') {
       res.redirect(`https://${req.headers.host}${req.originalUrl}`);
       return;
     }
 
-    const statsFile = path.join(process.cwd(), './build-static/loadable-stats.json');
+    const statsFile = path.join(
+      process.cwd(),
+      './build-static/loadable-stats.json'
+    );
     const extractor = new ChunkExtractor({
       statsFile,
       entrypoints: ['client'],
@@ -54,7 +57,9 @@ export default function () {
           <title>${req.config.get('title')}</title>
           ${extractor.getLinkTags()}
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous" />
-          <script id="stateData">window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')};</script>
+          <script id="stateData">window.__PRELOADED_STATE__ = ${JSON.stringify(
+            preloadedState
+          ).replace(/</g, '\\u003c')};</script>
           ${extractor.getStyleTags()}
         </head>
         <body>
@@ -64,5 +69,5 @@ export default function () {
         </body>
       </html>
     `);
-  }
+  };
 }

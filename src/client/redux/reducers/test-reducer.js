@@ -6,7 +6,10 @@ export const defaultState = {
   data: [],
 };
 
-export default function testReducer(state = defaultState, action = { type: undefined }) {
+export default function testReducer(
+  state = defaultState,
+  action = { type: undefined }
+) {
   const { payload } = action;
   switch (action.type) {
     case Actions.Test.FetchDataPending:
