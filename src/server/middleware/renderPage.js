@@ -59,8 +59,8 @@ export default function () {
         </head>
         <body>
           <div id="root">${html}</div>
-          <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
           ${extractor.getScriptTags()}
+          <script async src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
         </body>
       </html>
     `);
