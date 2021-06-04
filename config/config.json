@@ -13,10 +13,7 @@
       "priority": 20,
       "module": {
         "name": "morgan",
-        "arguments": [
-          "config:logging.format",
-          "config:logging.options"
-        ]
+        "arguments": ["config:logging.format", "config:logging.options"]
       }
     },
     "static": {
@@ -24,9 +21,7 @@
       "module": {
         "name": "express",
         "method": "static",
-        "arguments": [
-          "path:./static"
-        ]
+        "arguments": ["path:./static"]
       }
     },
     "assets": {
@@ -34,9 +29,7 @@
       "module": {
         "name": "express",
         "method": "static",
-        "arguments": [
-          "path:./build-static"
-        ]
+        "arguments": ["path:./build-static"]
       }
     },
     "cookie": {
@@ -57,9 +50,7 @@
       "module": {
         "name": "body-parser",
         "method": "urlencoded",
-        "arguments": [
-          { "extended": true }
-        ]
+        "arguments": [{ "extended": true }]
       }
     },
     "gzipCompression": {

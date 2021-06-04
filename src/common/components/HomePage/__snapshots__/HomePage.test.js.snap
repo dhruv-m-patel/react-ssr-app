@@ -79,14 +79,17 @@ exports[`HomePage it should render 1`] = `
               Express v4
             </li>
             <li>
-              Configuration (using 
+              Configuration (using
+               
               <a
                 href="https://www.npmjs.com/package/confit"
                 target="blank"
               >
                 confit
               </a>
-               / 
+               
+              /
+               
               <a
                 href="https://www.npmjs.com/package/meddleware"
                 target="blank"
@@ -96,7 +99,8 @@ exports[`HomePage it should render 1`] = `
               )
             </li>
             <li>
-              Code splitting (using 
+              Code splitting (using
+               
               <a
                 href="https://loadable-components.com/docs/getting-started/"
                 target="blank"

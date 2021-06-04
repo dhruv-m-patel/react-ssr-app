@@ -17,6 +17,6 @@ export default function renderApp() {
         <Router />
       </Provider>
     </BrowserRouter>,
-    document.getElementById('root'),
+    document.getElementById('root')
   );
 }

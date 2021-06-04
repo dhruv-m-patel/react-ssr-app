@@ -19,11 +19,12 @@ export function generateRequest({ body, ...options }) {
   };
 }
 
-export const fetchTestData = () => generateRequest({
-  endpoint: '/api/test-data',
-  types: [
-    Actions.Test.FetchDataPending,
-    Actions.Test.FetchDataCompleted,
-    Actions.Test.FetchDataFailed,
-  ],
-});
+export const fetchTestData = () =>
+  generateRequest({
+    endpoint: '/api/test-data',
+    types: [
+      Actions.Test.FetchDataPending,
+      Actions.Test.FetchDataCompleted,
+      Actions.Test.FetchDataFailed,
+    ],
+  });

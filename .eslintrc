@@ -1,11 +1,10 @@
 {
-  "plugins": [
-    "react"
-  ],
-  "extends":  [
+  "plugins": ["react"],
+  "extends": [
     "standard",
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "prettier"
   ],
   "settings": {
     "react": {

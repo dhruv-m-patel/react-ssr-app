@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function (config) {
   const plugins = [
     '@babel/transform-runtime',
     '@babel/proposal-class-properties',
@@ -17,11 +17,14 @@ module.exports = function(config) {
   return {
     plugins,
     presets: [
-      ['@babel/preset-env', {
-        targets: { node: 'current' },
-        exclude: ['transform-regenerator'],
-      }],
+      [
+        '@babel/preset-env',
+        {
+          targets: { node: 'current' },
+          exclude: ['transform-regenerator'],
+        },
+      ],
       '@babel/preset-react',
     ],
   };
-}
+};

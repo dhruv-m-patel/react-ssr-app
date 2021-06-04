@@ -7,12 +7,6 @@ module.exports = {
   globals: {
     NODE_ENV: 'test',
   },
-  moduleFileExtensions: [
-    'js',
-    'jsx',
-    'json',
-  ],
-  moduleDirectories: [
-    'node_modules',
-  ]
+  moduleFileExtensions: ['js', 'jsx', 'json'],
+  moduleDirectories: ['node_modules'],
 };

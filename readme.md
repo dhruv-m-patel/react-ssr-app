@@ -49,6 +49,7 @@ $ npm run start-dev
 - Run `npm run migration:undo` to undo a previously ran migration, one at a time.
 
 ### Made with:
+
 - React v16.8
 - Webpack v4
 - Babel v7

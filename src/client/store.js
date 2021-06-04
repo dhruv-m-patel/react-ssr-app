@@ -4,13 +4,16 @@ import rootReducer from './redux/reducers';
 
 export default function configureStore(preloadedState) {
   let composeEnhancers = compose;
-  if (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
+  if (
+    typeof window !== 'undefined' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  ) {
     composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
   }
 
   return createStore(
     rootReducer,
     preloadedState || rootReducer.initialState,
-    composeEnhancers(applyMiddleware(apiMiddleware)),
+    composeEnhancers(applyMiddleware(apiMiddleware))
   );
 }

@@ -6,10 +6,8 @@ import meddleware from 'meddleware';
 import handlers from 'shortstop-handlers';
 import shortstopRegex from 'shortstop-regex';
 import 'fetch-everywhere';
-import getConfiguration from '../lib/utils/getConfiguration'
-import betterRequire from '../lib/utils/betterRequire'
-import { connectMysqlDb } from '../lib/clients/mysql'
-import { connectPostgresDb } from '../lib/clients/postgres'
+import getConfiguration from '../lib/utils/getConfiguration';
+import betterRequire from '../lib/utils/betterRequire';
 
 export default class ExpressServer {
   constructor() {
@@ -18,7 +16,7 @@ export default class ExpressServer {
     this.addConfiguration(process.cwd());
   }
 
-  configurations = []
+  configurations = [];
 
   async configure() {
     let lastConfig;
@@ -36,23 +34,28 @@ export default class ExpressServer {
       basedir: path.join(rootDirectory, 'config'),
       protocols: {
         path: handlers.path(rootDirectory),
-        sourcepath: handlers.path(path.join(rootDirectory, process.env.NODE_ENV === 'development' ? 'src' : 'build')),
+        sourcepath: handlers.path(
+          path.join(
+            rootDirectory,
+            process.env.NODE_ENV === 'development' ? 'src' : 'build'
+          )
+        ),
         require: betterRequire(rootDirectory),
         regex: shortstopRegex(),
         env: handlers.env(),
-      }
+      },
     });
     this.configurations.push(configFactory);
   }
 
   async start() {
-    const config = this.config = await this.configure();
+    const config = (this.config = await this.configure());
     if (config.get('trustProxy')) {
       this.app.enable('trust proxy');
     }
 
     // disable X-Powered-By header
-    this.app.disable('x-powered-by')
+    this.app.disable('x-powered-by');
 
     this.app.use((req, res, next) => {
       req.config = config;
@@ -64,23 +67,12 @@ export default class ExpressServer {
     if (process.env.NODE_ENV === 'development') {
       const webpack = require('webpack');
       const compiler = webpack(require('../../webpack.config.js'));
-      this.app.use(require('webpack-dev-middleware')(compiler, {
-        stats: { colors: true },
-      }));
-      this.app.use(require('webpack-hot-middleware')(compiler));
-    }
-
-    const dbType = config.get('db:dbType');
-    if (['mysql', 'pg'].includes(dbType)) {
-      const connectDb = dbType === 'mysql' ? connectMysqlDb : connectPostgresDb;
-      connectDb()
-        .then((database) => {
-          this.app.db = database;
-          console.log(`${dbType === 'mysql' ? 'MySQL' : 'Postgres'} database connected...`);
+      this.app.use(
+        require('webpack-dev-middleware')(compiler, {
+          stats: { colors: true },
         })
-        .catch((err) => {
-          console.log(`Error connecting to database: ${err.message}`, err.stack);
-        });
+      );
+      this.app.use(require('webpack-hot-middleware')(compiler));
     }
 
     const middleware = config.get('meddleware');
@@ -89,8 +81,12 @@ export default class ExpressServer {
     }
 
     return new Promise((resolve, reject) => {
-      const port = ['staging', 'production'].includes(process.env.NODE_ENV) ? process.env.PORT : config.get('port');
-      this.server.listen(port, resolve);
+      const port = ['staging', 'production'].includes(process.env.NODE_ENV)
+        ? process.env.PORT
+        : config.get('port');
+      this.server.listen(port, () => {
+        resolve(config);
+      });
     });
   }
 
