@@ -14,7 +14,7 @@
     "build": "npm run build:server && npm run build:client",
     "clean": "rimraf build && rimraf build-static",
     "start": "node ./build/server/index.js",
-    "start-dev": "npm run clean && babel-node ./src/server/index.js",
+    "start-dev": "babel-node ./src/server/index.js",
     "start:watch": "npm run clean && npm run build && nodemon",
     "lint:js": "eslint src/**/*.js && eslint src/**/*.jsx",
     "lint:css": "stylelint \"./src/**/*.css\"",
