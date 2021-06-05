@@ -1,7 +1,7 @@
 {
-  "name": "react-app",
+  "name": "universal-react",
   "version": "1.0.0",
-  "description": "React app with SSR support",
+  "description": "A universal react app boilerplate with SSR and database support",
   "main": "build/server/index.js",
   "scripts": {
     "migration:create": "db-migrate --config migrations/db-migrate.json create",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dhruv-m-patel/react-app.git"
+    "url": "git+https://github.com/dhruv-m-patel/universal-react.git"
   },
   "keywords": [
     "react",
@@ -39,9 +39,9 @@
   ],
   "author": "Dhruv Patel",
   "bugs": {
-    "url": "https://github.com/dhruv-m-patel/react-app/issues"
+    "url": "https://github.com/dhruv-m-patel/universal-react/issues"
   },
-  "homepage": "https://github.com/dhruv-m-patel/react-app#readme",
+  "homepage": "https://github.com/dhruv-m-patel/universal-react#readme",
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.14.0",

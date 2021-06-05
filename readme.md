@@ -1,13 +1,13 @@
-# react-app
+# universal-react
 
-React app with SSR / Redux / Configuration / Code Splitting support
+A universal react app with SSR and database support
 
-![CI Status](https://github.com/dhruv-m-patel/react-app/workflows/Continuous%20Integration/badge.svg)
+![CI Status](https://github.com/dhruv-m-patel/universal-react/workflows/Continuous%20Integration/badge.svg)
 
 ### Setup
 
 ```
-$ git clone git@github.com:dhruv-m-patel/react-app.git
+$ git clone git@github.com:dhruv-m-patel/universal-react.git
 $ npm install
 $ npm run start-dev
 ```
@@ -21,8 +21,8 @@ $ npm run start-dev
 
 #### Adding new request middleware
 
-- Add your middleware in `src/server/middleware` (Reference: [`renderPage` middleware](https://github.com/dhruv-m-patel/react-app/blob/master/src/server/middleware/renderPage.js))
-- Add configuration for loading middleware with an appropriate order in `config/config.json` (Reference: [`renderPage` middleware configuration entry](https://github.com/dhruv-m-patel/react-app/blob/master/config/config.json#L73))
+- Add your middleware in `src/server/middleware` (Reference: [`renderPage` middleware](https://github.com/dhruv-m-patel/universal-react/blob/master/src/server/middleware/renderPage.js))
+- Add configuration for loading middleware with an appropriate order in `config/config.json` (Reference: [`renderPage` middleware configuration entry](https://github.com/dhruv-m-patel/universal-react/blob/master/config/config.json#L73))
 
 #### Adding MySQL database support
 
