@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A universal react app boilerplate with SSR and database support",
   "main": "build/server/index.js",
+  "engines": {
+    "node": ">= 14.15.5",
+    "npm": ">= 6.14.11"
+  },
   "scripts": {
     "migration:create": "db-migrate --config migrations/db-migrate.json create",
     "migration:apply": "db-migrate --config migrations/db-migrate.json up",
