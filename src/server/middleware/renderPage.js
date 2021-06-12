@@ -11,7 +11,11 @@ import Router from '../../common/router';
 export default function () {
   return function renderPage(req, res) {
     // Redirect to secure url in production
-    if (req.config.get('env:env') === 'production' && req.protocol === 'http') {
+    if (
+      req.config.get('env:env') === 'production' &&
+      req.protocol === 'http' &&
+      process.env.HTTPS_ONLY === true
+    ) {
       res.redirect(`https://${req.headers.host}${req.originalUrl}`);
       return;
     }

@@ -17,7 +17,7 @@
     "build:client": "BABEL_ENV=webpack webpack",
     "build": "npm run build:server && npm run build:client",
     "clean": "rimraf build && rimraf build-static",
-    "start": "node ./build/server/index.js",
+    "start": "NODE_ENV=production node ./build/server/index.js",
     "start-dev": "babel-node ./src/server/index.js",
     "start:watch": "npm run clean && npm run build && nodemon",
     "lint:js": "eslint src/**/*.js && eslint src/**/*.jsx",
