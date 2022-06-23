@@ -127,7 +127,7 @@
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "jest-enzyme": "^7.1.2",
-    "jsdom": "^15.2.1",
+    "jsdom": "^16.5.0",
     "lint-staged": "^11.0.0",
     "mini-css-extract-plugin": "^0.8.2",
     "nodemon": "^1.19.4",
