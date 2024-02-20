@@ -6,10 +6,13 @@ A universal react app with SSR and database support
 
 ### Setup
 
-```
-$ git clone git@github.com:dhruv-m-patel/universal-react.git
-$ npm install
-$ npm run start-dev
+```bash
+git clone git@github.com:dhruv-m-patel/universal-react.git
+nvm use
+corepack enable
+yarn set version self
+yarn install
+yarn start-dev
 ```
 
 ### Using this app
@@ -42,11 +45,11 @@ $ npm run start-dev
 
 #### Setting up database
 
-- Run `npm run migration:create` to create a new migration
-- Run `npm run migration:apply` to apply migration to local database
-- Run `npm run migration:apply:stage` to apply migration to staging database
-- Run `npm run migration:apply:prod` to apply migration to production database
-- Run `npm run migration:undo` to undo a previously ran migration, one at a time.
+- Run `yarn migration:create` to create a new migration
+- Run `yarn migration:apply` to apply migration to local database
+- Run `yarn migration:apply:stage` to apply migration to staging database
+- Run `yarn migration:apply:prod` to apply migration to production database
+- Run `yarn migration:undo` to undo a previously ran migration, one at a time.
 
 ### Made with:
 

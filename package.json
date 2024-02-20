@@ -4,8 +4,8 @@
   "description": "A universal react app boilerplate with SSR and database support",
   "main": "build/server/index.js",
   "engines": {
-    "node": ">= 14.15.5",
-    "npm": ">= 6.14.11"
+    "node": ">= 18",
+    "npm": ">= 9"
   },
   "scripts": {
     "migration:create": "db-migrate --config migrations/db-migrate.json create",
@@ -15,14 +15,14 @@
     "migration:undo": "db-migrate --config migrations/db-migrate.json down",
     "build:server": "babel ./src --out-dir build",
     "build:client": "BABEL_ENV=webpack webpack",
-    "build": "npm run build:server && npm run build:client",
+    "build": "yarn build:server && yarn build:client",
     "clean": "rimraf build && rimraf build-static",
     "start": "NODE_ENV=production node ./build/server/index.js",
     "start-dev": "babel-node ./src/server/index.js",
-    "start:watch": "npm run clean && npm run build && nodemon",
+    "start:watch": "yarn clean && yarn build && nodemon",
     "lint:js": "eslint src/**/*.js && eslint src/**/*.jsx",
     "lint:css": "stylelint \"./src/**/*.css\"",
-    "lint": "npm run lint:js && npm run lint:css",
+    "lint": "yarn lint:js && yarn lint:css",
     "prettier:format": "prettier --write .",
     "prettier:verify": "prettier --check .",
     "pretest": "jest --clearCache",
@@ -152,5 +152,6 @@
     "**/*": [
       "prettier --write --ignore-unknown"
     ]
-  }
+  },
+  "packageManager": "yarn@3.2.3"
 }
