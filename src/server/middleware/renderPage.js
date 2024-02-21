@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import path from 'path';
 import { StaticRouter } from 'react-router-dom';
@@ -49,7 +49,7 @@ export default function () {
         </Provider>
       </StaticRouter>
     );
-    const html = ReactDOMServer.renderToString(application);
+    const html = renderToString(application);
 
     res.send(`
       <!DOCTYPE html>

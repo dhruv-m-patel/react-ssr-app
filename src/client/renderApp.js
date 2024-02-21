@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { hydrateRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import createStore from './store';
@@ -11,12 +11,12 @@ export default function renderApp() {
   delete window.__PRELOADED_STATE__;
   const store = createStore(preloadedState);
 
-  ReactDOM.hydrate(
+  hydrateRoot(
+    document.getElementById('root'),
     <BrowserRouter forceRefresh={!supportsHistory}>
       <Provider store={store}>
         <Router />
       </Provider>
-    </BrowserRouter>,
-    document.getElementById('root')
+    </BrowserRouter>
   );
 }
