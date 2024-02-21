@@ -17,7 +17,7 @@ export default function ReduxExamplePage({
   fetchTestData,
 }) {
   useEffect(() => {
-    if (!isFetching && !error && !data?.length) {
+    if (!isFetching && !error && (!data || !data.length)) {
       fetchTestData();
     }
   }, [isFetching, error, data]);
