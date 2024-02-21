@@ -32,6 +32,8 @@ const minificationPlugins = [
     sourceMap: true,
     cache: true,
     parallel: true,
+    // Exclude uglification for the `vendor` chunk
+    chunkFilter: (chunk) => chunk.name !== 'vendor',
   }),
   new OptimizeCSSAssetsPlugin({
     cssProcessorOptions: {
