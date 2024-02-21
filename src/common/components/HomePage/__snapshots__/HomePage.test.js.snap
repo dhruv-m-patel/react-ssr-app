@@ -61,7 +61,7 @@ exports[`HomePage it should render 1`] = `
           </h5>
           <ul>
             <li>
-              React v16.8
+              React v18
             </li>
             <li>
               Redux

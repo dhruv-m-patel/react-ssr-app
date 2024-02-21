@@ -11,7 +11,7 @@ export default function HomePage() {
         <Col sm={{ offset: 1, span: 10 }} md={{ offset: 4, span: 4 }}>
           <h5>This starter-kit was built with:</h5>
           <ul>
-            <li>React v16.8</li>
+            <li>React v18</li>
             <li>Redux</li>
             <li>React Router</li>
             <li>Webpack v4</li>

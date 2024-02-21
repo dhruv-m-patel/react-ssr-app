@@ -53,7 +53,7 @@ yarn start-dev
 
 ### Made with:
 
-- React v16.8
+- React v18
 - Webpack v4
 - Babel v7
 - Express v4
