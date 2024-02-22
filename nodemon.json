@@ -1,5 +1,5 @@
 {
-  "exec": "yarn start",
+  "exec": "yarn dev",
   "watch": ["src/*", "static/*"],
   "ext": "js, jsx, css"
 }

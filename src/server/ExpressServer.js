@@ -65,14 +65,7 @@ export default class ExpressServer {
     // NOTE: configure using webpack-dev-middleware and webpack-hot-middleware earlier than other middlewares
     // for hot- reloading to work. Changing order may not guarantee live browser refresh.
     if (process.env.NODE_ENV === 'development') {
-      const webpack = require('webpack');
-      const compiler = webpack(require('../../webpack.config.js'));
-      this.app.use(
-        require('webpack-dev-middleware')(compiler, {
-          stats: { colors: true },
-        })
-      );
-      this.app.use(require('webpack-hot-middleware')(compiler));
+      // Hot reloading here
     }
 
     const middleware = config.get('meddleware');

@@ -1,15 +1,11 @@
-import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { Provider } from 'react-redux';
-import path from 'path';
-import { StaticRouter } from 'react-router-dom';
-import { ChunkExtractor } from '@loadable/server';
 import createStore from '../../client/store';
 import { DEFAULT_STATE } from '../../client/redux/reducers';
-import Router from '../../common/router';
 
-export default function () {
-  return function renderPage(req, res) {
+const isProduction = ['staging', 'production'].includes(process.env.NODE_ENV);
+
+export default function RenderPage() {
+  return async function renderPage(req, res) {
     // Redirect to secure url in production
     if (
       req.config.get('env:env') === 'production' &&
@@ -20,15 +16,19 @@ export default function () {
       return;
     }
 
-    const statsFile = path.join(
-      process.cwd(),
-      './build-static/loadable-stats.json'
-    );
-    const extractor = new ChunkExtractor({
-      statsFile,
-      entrypoints: ['client'],
-      publicPath: '/',
-    });
+    const ssrManifest =
+      isProduction &&
+      (await fs.readFile('./dist/client/.vite/ssr-manifest.json', 'utf-8'));
+    let vite;
+    if (!isProduction) {
+      const { createServer } = await import('vite');
+      vite = await createServer({
+        server: { middlewareMode: true },
+        appType: 'custom',
+        base,
+      });
+      app.use(vite.middlewares);
+    }
 
     const context = {};
     if (context.url) {
@@ -42,36 +42,36 @@ export default function () {
       req.initialState = preloadedState;
     }
 
-    const application = extractor.collectChunks(
-      <StaticRouter location={req.url} context={context}>
-        <Provider store={store}>
-          <Router />
-        </Provider>
-      </StaticRouter>
-    );
-    const html = renderToString(application);
+    const url = req.originalUrl.replace('/', '');
+    let template;
+    let render;
 
-    res.send(`
-      <!DOCTYPE html>
-      <html lang="en-US">
-        <head>
-          <meta charset="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" priority="1" />
-          <meta name="ie-compat" content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-          <title>${req.config.get('title')}</title>
-          ${extractor.getLinkTags()}
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous" />
+    if (!isProduction) {
+      template = await fs.readFile('../../index.html', 'utf-8');
+      template = await vite.transformIndexHtml(url, template);
+      const rendered = await vite.ssrLoadModule('../App.jsx').default;
+      render = rendered({ url, store, context });
+    } else {
+      template = templateHtml;
+      rendered = (await import('../../../build/server/App.jsx')).default;
+      render = rendered({ url, store, context });
+    }
+
+    const content = await render(url, ssrManifest);
+    const jsxHtml = renderToString(content);
+    const html = template
+      .replace('<!--app-head-->', content.head || '')
+      .replace('<!--app-html-->', jsxHtml || '')
+      .replace('<!--app-title-->', req.config.get('title'))
+      .replace(
+        '<!--app.state-->',
+        `
           <script id="stateData">window.__PRELOADED_STATE__ = ${JSON.stringify(
             preloadedState
           ).replace(/</g, '\\u003c')};</script>
-          ${extractor.getStyleTags()}
-        </head>
-        <body>
-          <div id="root">${html}</div>
-          ${extractor.getScriptTags()}
-          <script async src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
-        </body>
-      </html>
-    `);
+      `
+      );
+
+    res.status(200).set('Content-Type', 'text/html').send(html);
   };
 }
